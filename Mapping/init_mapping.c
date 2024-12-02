@@ -3,10 +3,8 @@
 
 bool	ft_validation_map(char	*map)
 {
-	if (ft_strchr(map, ".ber"))
-	{
-		/* code */
-	}
+	if (ft_strstr(map, ".ber") == NULL)
+		return (false);
 	
 }
 
