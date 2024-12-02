@@ -12,7 +12,7 @@
 
 #include "../Headers/libft.h"
 
-char	*ft_next_line(char *line)
+static char	*ft_next_line(char *line)
 {
 	size_t	i;
 	size_t	n;
@@ -38,7 +38,7 @@ char	*ft_next_line(char *line)
 	return (tline);
 }
 
-char	*full_line(char *tline)
+static char	*full_line(char *tline)
 {
 	char	*line;
 	int		i;
@@ -64,7 +64,7 @@ char	*full_line(char *tline)
 	return (line);
 }
 
-char	*ft_get_line(int fd, char *tline)
+static char	*ft_get_line(int fd, char *tline)
 {
 	char	*line;
 	ssize_t	bytesread;
