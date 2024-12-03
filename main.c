@@ -10,12 +10,12 @@ void	ft_open_map(char *argv, t_mlx *mlx, t_map *map)
 		perror("Error invalid path\n");
 		exit (1);
 	}
-	if (!ft_validation_map(argv[1]))
+	if (!ft_validation_map(argv[1], fd, map, mlx))
 	{
 		perror("Error invalid map\n");
 		exit (1);
 	}
-	ft_init_mapping(mlx, map);
+	ft_init_mapping(fd, mlx, map);
 }
 
 int main(int argc, char **argv)

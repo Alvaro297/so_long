@@ -16,7 +16,6 @@ typedef struct structure
 	int		n_collects;
 	int		n_players;
 	int		n_exits;
-	bool	is_map_correct;
 }	t_map;
 
 

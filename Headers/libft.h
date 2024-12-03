@@ -7,6 +7,7 @@
 
 // String functions
 size_t	ft_strlen(const char *s);
+int		ft_strlen_mod(char *s);
 size_t	ft_strlcpy(char *dest, char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
@@ -23,6 +24,5 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 //GNL
-int		ft_line_length(int fd);
 char	*get_next_line(int fd);
 #endif

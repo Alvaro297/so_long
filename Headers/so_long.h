@@ -11,6 +11,6 @@
 # include <stdbool.h>
 
 
-void	ft_init_mapping(t_mlx *mlx, t_map *map);
+void	ft_init_mapping(int fd, t_mlx *mlx, t_map *map);
 bool	ft_validation_map(char	*map);
 #endif
