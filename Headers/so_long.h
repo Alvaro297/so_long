@@ -12,5 +12,5 @@
 
 
 void	ft_init_mapping(int fd, t_mlx *mlx, t_map *map);
-bool	ft_validation_map(char	*map);
+bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx);
 #endif

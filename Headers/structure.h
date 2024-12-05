@@ -8,7 +8,7 @@ typedef struct s_mlx
 	t_map	map;
 }	t_mlx;
 
-typedef struct structure
+typedef struct s_map
 {
 	char	**matriz;
 	int		height;
