@@ -10,6 +10,7 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
 		return (false);
 	if (ft_bad_implementation(fd, map))
 		return (false);
+	return (true);
 }
 
 bool	ft_bad_width(int fd, t_map *map)
@@ -21,14 +22,16 @@ bool	ft_bad_width(int fd, t_map *map)
 	if (line != NULL)
 	{
 		map->width = ft_strlen_mod(line);
-		map->height += 1;
+		map->height++;
 		while (line != NULL)
 		{
 			line = get_next_line(fd);
 			if (map->width != ft_strlen_mod(line))
 				return (true);
-			map->height += 1;
+			map->height++;
 		}
+		if (map->height == map->width)
+			return (true);
 	}
 	return (false);
 }
@@ -46,20 +49,58 @@ bool	ft_bad_implemetation(int fd, t_map *map)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		ft_check_map_characters(line, map, f++);
+		if (ft_check_map_characters(line, map, f++) == 1)
+			return (true);
+		if (ft_check_map_items(line, map, f++) == 1)
+			return (true);
 		line = get_next_line(fd);
 	}
 	return (false);
 }
 
-void	ft_check_map_characters(char *line, t_map *map, int f)
+int	ft_check_map_characters(char *line, t_map *map, int f)
 {
 	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		/* code */
+		if (f == 0 || f == map -> height)
+		{
+			if (line[i] != '1')
+				return (1);
+		}
+		else
+		{
+			if (i == 0 || i == map -> width)
+			{
+				if (line[i] != '1')
+					return (1);
+			}
+		}
 	}
-	
+	return (0);
+}
+
+int	ft_check_map_characters(char *line, t_map *map, int f)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'E' || line[i] == 'C' || line[i] == 'P')
+		{
+			if (line[i] == 'E')
+				map->n_exits++;
+			if (line[i] == 'C')
+				map->n_collects++;
+			if (line[i] == 'P')
+				map->n_players++;
+		}
+		i++;
+	}
+	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
+		return (1);
+	return (0);
 }

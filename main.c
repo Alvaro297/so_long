@@ -15,7 +15,9 @@ void	ft_open_map(char *argv, t_mlx *mlx, t_map *map)
 		perror("Error invalid map\n");
 		exit (1);
 	}
-	ft_init_mapping(fd, mlx, map);
+	ft_init_mapping(fd, map);
+	mlx -> map = *map;
+	close(fd);
 }
 
 int main(int argc, char **argv)
@@ -24,5 +26,6 @@ int main(int argc, char **argv)
 	t_map	map;
 
 	ft_open_map(argv[1], &mlx, &map);
-	return 0;
+	mlx.mlx_ptr = mlx_init();
+	return (0);
 }
