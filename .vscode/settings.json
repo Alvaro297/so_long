@@ -2,6 +2,8 @@
 	"files.associations": {
 		"libft.h": "c",
 		"so_long.h": "c",
-		"stdbool.h": "c"
+		"stdbool.h": "c",
+		"stdlib.h": "c",
+		"unistd.h": "c"
 	}
 }

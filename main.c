@@ -16,7 +16,10 @@ void	ft_open_map(char *argv, t_mlx *mlx, t_map *map)
 		exit (1);
 	}
 	ft_init_mapping(fd, map);
+	ft_collec_start(map);
 	mlx -> map = *map;
+	mlx -> height_win = map ->height * TILE_SIZE;
+	mlx -> width_win = map ->height * TILE_SIZE;
 	close(fd);
 }
 
@@ -26,6 +29,8 @@ int main(int argc, char **argv)
 	t_map	map;
 
 	ft_open_map(argv[1], &mlx, &map);
+	ft_player_start(&mlx);
 	mlx.mlx_ptr = mlx_init();
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win, mlx.height_win, "so_long");
 	return (0);
 }
