@@ -31,4 +31,7 @@ void	ft_player_start(t_mlx *mlx);
 void	ft_collec_start(t_map *map);
 void	ft_localization(t_mlx *mlx, t_player *player);
 void	ft_localization_collec(t_mlx *mlx, t_collectible *collec);
+// ---- Draw images ---- //
+void	ft_draw_background(t_mlx *mlx);
+void	ft_draw_collections_player(t_mlx *mlx);
 #endif
