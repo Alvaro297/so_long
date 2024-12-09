@@ -33,7 +33,7 @@ void	ft_player_start(t_mlx *mlx)
 	player->img_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_back.xpm", &img_width, &img_height);
 	player->img_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_left.xpm", &img_width, &img_height);
 	player->img_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_right.xpm", &img_width, &img_height);
-	ft_localization_player(mlx, player);
+	ft_localization(mlx, player);
 	mlx->player = *player;
 }
 
@@ -83,7 +83,7 @@ void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
 
 	x = 0;
 	index = 0;
-	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/collectible.xpm", TILE_SIZE, TILE_SIZE);
+	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, TILE_SIZE, TILE_SIZE);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;
