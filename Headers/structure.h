@@ -7,6 +7,7 @@ typedef struct s_mlx
 	void	*win_ptr;
 	int		width_win;
 	int		height_win;
+	int		moves;
 	t_map	map;
 	t_player player;
 }	t_mlx;
@@ -15,6 +16,7 @@ typedef struct s_collectible
 {
 	int		x;
 	int		y;
+	int		is_catched;
 	void	*img;
 }	t_collectible;
 
@@ -26,7 +28,7 @@ typedef struct s_map
 	int		n_collects;
 	int		n_players;
 	int		n_exits;
-	t_collectible   *collectibles;
+	t_collectible	*collectibles;
 }	t_map;
 
 typedef struct s_player

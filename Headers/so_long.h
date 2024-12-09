@@ -11,9 +11,16 @@
 # include <stdbool.h>
 
 # define TILE_SIZE 32
+# define GRASS_PATH "../Textures/Floor.xpm"
+# define TREE_PATH "../Textures/Tree.xpm"
+# define COLLEC_PATH "../Textures/Coleccionable.xpm"
 
+
+// ---- Main ---- //
+int		main(int argc, char **argv);
+void	ft_init(char *argv, t_mlx *mlx, t_map *map);
+// ---- Mapping ---- //
 void	ft_init_mapping(int fd, t_map *map);
-//Mapping
 void	ft_player_start(t_mlx *mlx);
 void	ft_init_mapping(int fd, t_map *map);
 bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx);

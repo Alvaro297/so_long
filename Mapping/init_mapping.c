@@ -93,6 +93,7 @@ void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
 			{
 				collec[index].x = x;
 				collec[index].y = y;
+				collec[index].is_catched = 1;
 				collec[index].img = collectible_img;
 				index++;
 			}
