@@ -1,5 +1,15 @@
 #include "../Headers/so_long.h"
 
+void	ft_init_player(t_player *player)
+{
+	player->x = 0;
+	player->y = 0;
+	player->img_up = NULL;
+	player->img_down = NULL;
+	player->img_left = NULL;
+	player->img_right = NULL;
+}
+
 void	ft_init_map(t_map *map)
 {
 	map->matriz = NULL;
@@ -12,7 +22,7 @@ void	ft_init_map(t_map *map)
 	map->collectibles = NULL;
 	map->wall = NULL;
 }
-/*
+
 void ft_init_mlx(t_mlx *mlx)
 {
 	mlx->mlx_ptr = NULL;
@@ -20,22 +30,6 @@ void ft_init_mlx(t_mlx *mlx)
 	mlx->height_win = 0;
 	mlx->width_win = 0;
 	mlx->moves = 0;
-	mlx->map = 0;
-	mlx->player = memset(mlx->player, 0, sizeof(t_player));
-}*/
-
-void	ft_init_mapping(int fd, t_map *map)
-{
-	int	i;
-
-	map->matriz = (char **)malloc(sizeof(char *) * (map->height + 1));
-	if (!map->matriz)
-		return ;
-	i = 0;
-	while (get_next_line(fd) != NULL)
-	{
-		map->matriz[i] = get_next_line(fd);
-		i++;
-	}
-	map->matriz[i] = NULL;
+	ft_init_map(&mlx->map);
+	ft_init_player(&mlx->player);
 }

@@ -1,9 +1,8 @@
-#include "../Headers/libft.h"
 #include "../Headers/so_long.h"
 
 bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
 {
-	init_map(map);
+	ft_init_map(map);
 	if (ft_strstr(map_src, ".ber") == NULL)
 		return (false);
 	if (ft_bad_width(fd, map))
@@ -33,6 +32,8 @@ bool	ft_bad_width(int fd, t_map *map)
 		if (map->height == map->width)
 			return (true);
 	}
+	if (map->height == 0 || map->width == 0)
+		return (true);
 	return (false);
 }
 

@@ -21,7 +21,7 @@ void	ft_player_start(t_mlx *mlx)
 	mlx->player = *player;
 }
 
-void	ft_collec_start(t_map *map)
+void	ft_collec_start(t_mlx *mlx, t_map *map)
 {
 	t_collectible	*collectibles;
 
@@ -31,7 +31,7 @@ void	ft_collec_start(t_map *map)
 		perror("Error\nmalloc failed\n");
 		exit(1);
 	}
-	ft_localization_collec(map, collectibles);
+	ft_localization_collec(mlx, collectibles);
 	map->collectibles = collectibles;
 }
 
