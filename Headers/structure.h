@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structure.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:08:44 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:08:44 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		width_win;
-	int		height_win;
-	int		moves;
-	t_map	map;
-	t_player player;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			width_win;
+	int			height_win;
+	int			moves;
+	t_map		map;
+	t_player	player;
 }	t_mlx;
 
 typedef struct s_collectible
@@ -29,13 +41,13 @@ typedef struct s_wall
 
 typedef struct s_map
 {
-	char	**matriz;
-	int		height;
-	int		width;
-	int		n_collects;
-	int		n_wall;
-	int		n_players;
-	int		n_exits;
+	char			**matriz;
+	int				height;
+	int				width;
+	int				n_collects;
+	int				n_wall;
+	int				n_players;
+	int				n_exits;
 	t_collectible	*collectibles;
 	t_wall			*wall;
 }	t_map;

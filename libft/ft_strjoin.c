@@ -25,4 +25,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(space_memory, s2, len_s1 + len_s2 + 1);
 	return (space_memory);
 }
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:08:22 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:08:22 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -14,7 +26,6 @@
 # define GRASS_PATH "../Textures/Floor.xpm"
 # define WALL_PATH "../Textures/Tree.xpm"
 # define COLLEC_PATH "../Textures/Coleccionable.xpm"
-
 
 // ---- Main ---- //
 int		main(int argc, char **argv);

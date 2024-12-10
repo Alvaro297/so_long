@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_all.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:11:15 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:11:15 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Headers/so_long.h"
 
 void	ft_init_player(t_player *player)
@@ -23,7 +35,7 @@ void	ft_init_map(t_map *map)
 	map->wall = NULL;
 }
 
-void ft_init_mlx(t_mlx *mlx)
+void	ft_init_mlx(t_mlx *mlx)
 {
 	mlx->mlx_ptr = NULL;
 	mlx->win_ptr = NULL;

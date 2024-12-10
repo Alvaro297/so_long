@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validating_map.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:14:45 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:14:45 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Headers/so_long.h"
 
 bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
@@ -92,7 +104,8 @@ int	ft_check_map_items(char *line, t_map *map, int f)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == 'E' || line[i] == 'C' || line[i] == 'P' || line[i] == '1')
+		if (line[i] == 'E' || line[i] == 'C'
+			|| line[i] == 'P' || line[i] == '1')
 		{
 			if (line[i] == '1')
 				map->n_wall++;
