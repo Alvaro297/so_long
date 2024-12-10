@@ -49,11 +49,12 @@ bool	ft_bad_implemetation(int fd, t_map *map)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if (ft_check_map_characters(line, map, f++) == 1)
+		if (ft_check_map_characters(line, map, f) == 1)
 			return (true);
-		if (ft_check_map_items(line, map, f++) == 1)
+		if (ft_check_map_items(line, map, f) == 1)
 			return (true);
 		line = get_next_line(fd);
+		f++;
 	}
 	return (false);
 }
@@ -78,19 +79,22 @@ int	ft_check_map_characters(char *line, t_map *map, int f)
 					return (1);
 			}
 		}
+		i++;
 	}
 	return (0);
 }
 
-int	ft_check_map_characters(char *line, t_map *map, int f)
+int	ft_check_map_items(char *line, t_map *map, int f)
 {
 	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == 'E' || line[i] == 'C' || line[i] == 'P')
+		if (line[i] == 'E' || line[i] == 'C' || line[i] == 'P' || line[i] == '1')
 		{
+			if (line[i] == '1')
+				map->n_wall++;
 			if (line[i] == 'E')
 				map->n_exits++;
 			if (line[i] == 'C')

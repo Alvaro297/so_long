@@ -17,6 +17,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 	}
 	ft_init_mapping(fd, map);
 	ft_collec_start(map);
+	ft_wall_start(map);
 	mlx -> map = *map;
 	mlx -> height_win = map ->height * TILE_SIZE;
 	mlx -> width_win = map ->width * TILE_SIZE;

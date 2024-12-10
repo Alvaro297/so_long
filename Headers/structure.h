@@ -20,15 +20,24 @@ typedef struct s_collectible
 	void	*img;
 }	t_collectible;
 
+typedef struct s_wall
+{
+	int		x;
+	int		y;
+	void	*img;
+}	t_wall;
+
 typedef struct s_map
 {
 	char	**matriz;
 	int		height;
 	int		width;
 	int		n_collects;
+	int		n_wall;
 	int		n_players;
 	int		n_exits;
 	t_collectible	*collectibles;
+	t_wall			*wall;
 }	t_map;
 
 typedef struct s_player
@@ -40,6 +49,5 @@ typedef struct s_player
 	int		x;
 	int		y;
 }	t_player;
-
 
 #endif 

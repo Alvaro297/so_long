@@ -12,7 +12,7 @@
 
 # define TILE_SIZE 32
 # define GRASS_PATH "../Textures/Floor.xpm"
-# define TREE_PATH "../Textures/Tree.xpm"
+# define WALL_PATH "../Textures/Tree.xpm"
 # define COLLEC_PATH "../Textures/Coleccionable.xpm"
 
 
@@ -27,6 +27,7 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx);
 bool	ft_bad_width(int fd, t_map *map);
 bool	ft_bad_implemetation(int fd, t_map *map);
 int		ft_check_map_characters(char *line, t_map *map, int f);
+int		ft_check_map_items(char *line, t_map *map, int f);
 void	ft_player_start(t_mlx *mlx);
 void	ft_collec_start(t_map *map);
 void	ft_localization(t_mlx *mlx, t_player *player);
