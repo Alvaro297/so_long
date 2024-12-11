@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:04:03 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:04:03 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Headers/so_long.h"
 
 void	ft_init_mapping(int fd, t_map *map)
@@ -44,7 +56,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 	close(fd);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 	t_map	map;
@@ -53,9 +65,9 @@ int main(int argc, char **argv)
 	ft_init(argv[1], &mlx, &map);
 	ft_player_start(&mlx);
 	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win, mlx.height_win, "so_long");
+	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win,
+			mlx.height_win, "so_long");
 	ft_draw_images(&mlx);
-	//mlx_key_hook(mlx.win_ptr, key_hook, &mlx);
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }

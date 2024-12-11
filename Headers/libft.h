@@ -1,9 +1,21 @@
-#ifndef LIBFT_H
-#define LIBFT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:08:01 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:08:01 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
 
 // String functions
 size_t	ft_strlen(const char *s);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_wall.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:14:08 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:14:08 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Headers/so_long.h"
 
 void	ft_wall_start(t_mlx *mlx, t_map *map)
@@ -23,7 +35,7 @@ void	ft_localization_wall(t_mlx *mlx, t_collectible *collec)
 
 	x = 0;
 	index = 0;
-	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, TILE_SIZE, TILE_SIZE);
+	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, 32, 32);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;

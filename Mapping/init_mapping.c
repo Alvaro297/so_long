@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_mapping.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-10 18:12:21 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-10 18:12:21 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Headers/so_long.h"
 
 void	ft_player_start(t_mlx *mlx)
 {
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
-	t_player *player;
+	char		*relative_path;
+	int			img_width;
+	int			img_height;
+	t_player	*player;
 
 	player = malloc(sizeof(t_player));
 	if (!player)
@@ -13,10 +25,17 @@ void	ft_player_start(t_mlx *mlx)
 		perror("Error\nmalloc failed\n");
 		exit(1);
 	}
-	player->img_up = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo.xpm", &img_width, &img_height);
-	player->img_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_back.xpm", &img_width, &img_height);
-	player->img_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_left.xpm", &img_width, &img_height);
-	player->img_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "../Textures/Gojo_right.xpm", &img_width, &img_height);
+	player->img_up = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"../Textures/Gojo.xpm", &img_width, &img_height);
+	player->img_down = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"../Textures/Gojo_back.xpm",
+			&img_width, &img_height);
+	player->img_left = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"../Textures/Gojo_left.xpm",
+			&img_width, &img_height);
+	player->img_right = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"../Textures/Gojo_right.xpm",
+			&img_width, &img_height);
 	ft_localization(mlx, player);
 	mlx->player = *player;
 }
@@ -67,7 +86,7 @@ void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
 
 	x = 0;
 	index = 0;
-	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, TILE_SIZE, TILE_SIZE);
+	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, 32, 32);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;
