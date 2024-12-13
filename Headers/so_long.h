@@ -22,6 +22,11 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+# define ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 # define TILE_SIZE 32
 # define GRASS_PATH "../Textures/Floor.xpm"
 # define WALL_PATH "../Textures/Tree.xpm"
@@ -46,9 +51,17 @@ void	ft_init_map(t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
 void	ft_init_player(t_player *player);
 void	ft_wall_start(t_mlx *mlx, t_map *map);
+void	ft_init_all_map(t_mlx *mlx, t_map *map);
+bool	ft_flood_fill(t_mlx *mlx, t_map *map);
 // ---- Draw images ---- //
 void	ft_draw_background(t_mlx *mlx);
 void	ft_draw_collections_player(t_mlx *mlx);
 void	ft_draw_images(t_mlx *mlx);
 void	ft_draw_wall(t_mlx *mlx);
+// ---- Rendering ---- //
+void	ft_render_map(t_mlx *mlx);
+int		key_hook(int keycode, t_mlx *mlx);
+// ---- Exit game ---- //
+int		ft_exit_fail(t_mlx *mlx);
+int		ft_exit_victory(t_mlx *mlx);
 #endif

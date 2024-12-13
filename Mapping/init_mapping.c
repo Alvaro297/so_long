@@ -105,3 +105,13 @@ void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
 		x++;
 	}
 }
+
+void	ft_init_all_map(t_mlx *mlx, t_map *map)
+{
+	ft_collec_start(mlx, map);
+	ft_wall_start(mlx, map);
+	mlx->map = *map;
+	mlx->height_win = map->height * TILE_SIZE;
+	mlx->width_win = map->width * TILE_SIZE;
+	mlx->moves = 0;
+}

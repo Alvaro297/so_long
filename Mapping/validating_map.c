@@ -16,11 +16,20 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
 {
 	ft_init_map(map);
 	if (ft_strstr(map_src, ".ber") == NULL)
+	{
+		ft_printf("\033cError invalid map\n");
 		return (false);
+	}
 	if (ft_bad_width(fd, map))
+	{
+		ft_printf("\033cError invalid width\n");
 		return (false);
+	}
 	if (ft_bad_implementation(fd, map))
+	{
+		ft_printf("\033cError invalid bad implemets of player, exit or collects\n");
 		return (false);
+	}
 	return (true);
 }
 

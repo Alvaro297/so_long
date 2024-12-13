@@ -62,4 +62,10 @@ typedef struct s_player
 	int		y;
 }	t_player;
 
+typedef struct s_map_fill
+{
+	int		x;
+	int		y;
+}	t_map_fill;
+
 #endif 

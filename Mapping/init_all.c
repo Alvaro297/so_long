@@ -45,3 +45,22 @@ void	ft_init_mlx(t_mlx *mlx)
 	ft_init_map(&mlx->map);
 	ft_init_player(&mlx->player);
 }
+
+void	ft_init_mapping(int fd, t_map *map)
+{
+	int		i;
+	char	*line;
+
+	map->matriz = (char **)malloc(sizeof(char *) * (map->height + 1));
+	if (!map->matriz)
+		return ;
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		map->matriz[i] = line;
+		line = get_next_line(fd);
+		i++;
+	}
+	map->matriz[i] = NULL;
+}
