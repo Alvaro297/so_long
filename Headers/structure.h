@@ -28,8 +28,8 @@ typedef struct s_collectible
 {
 	int		x;
 	int		y;
-	int		is_catched;
 	void	*img;
+	struct s_collectible	*next;
 }	t_collectible;
 
 typedef struct s_wall

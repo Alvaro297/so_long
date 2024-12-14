@@ -28,7 +28,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 		exit (1);
 	}
 	ft_init_mapping(fd, map);
-	if(!ft_flood_fill(mlx, map))
+	if (!ft_flood_fill(mlx, map))
 	{
 		close(fd);
 		exit(1);
