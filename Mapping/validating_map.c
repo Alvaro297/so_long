@@ -27,7 +27,8 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
 	}
 	if (ft_bad_implementation(fd, map))
 	{
-		ft_printf("\033cError invalid bad implemets of player, exit or collects\n");
+		ft_printf("\033cError invalid bad implemets of player,\
+			exit or collects\n");
 		return (false);
 	}
 	return (true);

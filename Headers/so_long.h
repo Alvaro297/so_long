@@ -13,7 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/ft_printf_so_long/ft_printf.h"
 # include "structure.h"
 # include "libft.h"
 # include <fcntl.h>
@@ -61,8 +62,13 @@ void	ft_draw_wall(t_mlx *mlx);
 // ---- Rendering ---- //
 void	ft_render_map(t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
-void	ft_move(t_mlx *mlx, int key, int direction, void *img_background);
+void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background);
+void	ft_change_player_texture(t_mlx *mlx, t_player player, int key);
+void	ft_delete_collect(t_mlx *mlx, t_player player, t_collectible *collec);
 // ---- Exit game ---- //
 int		ft_exit_fail(t_mlx *mlx);
 int		ft_exit_victory(t_mlx *mlx);
+// ---- Win game ---- //
+void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode);
+void	ft_win_game(t_mlx *mlx);
 #endif
