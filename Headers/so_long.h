@@ -61,6 +61,7 @@ void	ft_draw_wall(t_mlx *mlx);
 // ---- Rendering ---- //
 void	ft_render_map(t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
+void	ft_move(t_mlx *mlx, int key, int direction, void *img_background);
 // ---- Exit game ---- //
 int		ft_exit_fail(t_mlx *mlx);
 int		ft_exit_victory(t_mlx *mlx);
