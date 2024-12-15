@@ -39,6 +39,7 @@ void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode)
 void	ft_lose_game(t_mlx *mlx)
 {
 	ft_printf("You lose!\n");
+	ft_free_all(mlx);
 	exit(0);
 }
 
@@ -47,6 +48,7 @@ void	ft_win_game(t_mlx *mlx)
 	if (mlx->map.n_collects == 0)
 	{
 		ft_printf("You win!\n");
+		ft_free_all(mlx);
 		exit(0);
 	}
 }

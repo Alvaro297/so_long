@@ -48,6 +48,7 @@ void	ft_collec_start(t_mlx *mlx, t_map *map)
 	if (!collectibles)
 	{
 		perror("Error\nmalloc failed\n");
+		ft_free_map(map);
 		exit(1);
 	}
 	ft_localization_collec(mlx, collectibles);

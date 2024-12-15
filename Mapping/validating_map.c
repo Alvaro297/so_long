@@ -47,9 +47,13 @@ bool	ft_bad_width(int fd, t_map *map)
 		while (line != NULL)
 		{
 			line = get_next_line(fd);
-			if (map->width != ft_strlen_mod(line))
+			if (line == NULL || map->width != ft_strlen_mod(line))
+			{
+				free(line);
 				return (true);
+			}
 			map->height++;
+			free(line);
 		}
 		if (map->height == map->width)
 			return (true);
@@ -59,7 +63,7 @@ bool	ft_bad_width(int fd, t_map *map)
 	return (false);
 }
 
-bool	ft_bad_implemetation(int fd, t_map *map)
+bool	ft_bad_implementation(int fd, t_map *map)
 {
 	char	*line;
 	int		line_length;

@@ -14,13 +14,7 @@
 
 void	ft_free_all(t_mlx *mlx)
 {
-	int	i;
-
-	i = 0;
-	while (i < mlx->map.height)
-		free(mlx->map.matriz[i++]);
-	free(mlx->map.matriz);
-	i = 0;
+	ft_free_map(&mlx->map);
 	ft_free_collect(mlx->map.collectibles);
 	ft_free_wall(mlx->map.wall);
 	free(mlx->map.wall);
@@ -29,7 +23,7 @@ void	ft_free_all(t_mlx *mlx)
 	exit(0);
 }
 
-void	ft_free_player(t_player *player)
+static void	ft_free_player(t_player *player)
 {
 	free(player->img_up);
 	free(player->img_down);
@@ -37,7 +31,7 @@ void	ft_free_player(t_player *player)
 	free(player->img_right);
 }
 
-void	ft_free_collect(t_collectible *collectibles)
+static void	ft_free_collect(t_collectible *collectibles)
 {
 	t_collectible	*tmp;
 
@@ -50,7 +44,7 @@ void	ft_free_collect(t_collectible *collectibles)
 	}
 }
 
-void	ft_free_wall(t_wall *wall)
+static void	ft_free_wall(t_wall *wall)
 {
 	int	i;
 
@@ -60,4 +54,14 @@ void	ft_free_wall(t_wall *wall)
 		free(wall[i].img);
 		i++;
 	}
+}
+
+void	ft_free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+		free(map->matriz[i++]);
+	free(map->matriz);
 }

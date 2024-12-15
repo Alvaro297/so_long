@@ -41,7 +41,7 @@ void	ft_init_mapping(int fd, t_map *map);
 void	ft_player_start(t_mlx *mlx);
 bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx);
 bool	ft_bad_width(int fd, t_map *map);
-bool	ft_bad_implemetation(int fd, t_map *map);
+bool	ft_bad_implementation(int fd, t_map *map);
 int		ft_check_map_characters(char *line, t_map *map, int f);
 int		ft_check_map_items(char *line, t_map *map, int f);
 void	ft_player_start(t_mlx *mlx);
@@ -65,10 +65,12 @@ int		key_hook(int keycode, t_mlx *mlx);
 void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background);
 void	ft_change_player_texture(t_mlx *mlx, t_player player, int key);
 void	ft_delete_collect(t_mlx *mlx, t_player player, t_collectible *collec);
-// ---- Exit game ---- //
-int		ft_exit_fail(t_mlx *mlx);
-int		ft_exit_victory(t_mlx *mlx);
 // ---- Win game ---- //
 void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode);
+int		ft_exit_fail(t_mlx *mlx);
 void	ft_win_game(t_mlx *mlx);
+// ---- Free game ---- //
+void	ft_free_all(t_mlx *mlx);
+void	ft_free_map(t_map *map);
+void	ft_cleanup(t_mlx *mlx);
 #endif

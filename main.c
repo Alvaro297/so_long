@@ -28,12 +28,13 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 		exit (1);
 	}
 	ft_init_mapping(fd, map);
+	ft_init_all_map(mlx, map);
 	if (!ft_flood_fill(mlx, map))
 	{
 		close(fd);
+		ft_free_map(&mlx->map);
 		exit(1);
 	}
-	ft_init_all_map(mlx, map);
 	close(fd);
 }
 
@@ -50,8 +51,14 @@ int	main(int argc, char **argv)
 		return ;
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win,
 			mlx.height_win, "so_long");
+	if (!mlx.win_ptr)
+	{
+		ft_printf("\033Error creating window\n");
+		ft_cleanup(&mlx);
+		return (1);
+	}
 	ft_draw_images(&mlx);
 	ft_render_map(&mlx);
 	mlx_loop(mlx.mlx_ptr);
-	perror("Error\nloop failed\n");
+	perror("\033Error\nloop failed\n");
 }
