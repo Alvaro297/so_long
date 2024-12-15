@@ -22,7 +22,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 		ft_printf("\033cError invalid path\n");
 		exit (1);
 	}
-	if (!ft_validation_map(argv[1], fd, map, mlx))
+	if (!ft_validation_map(argv[1], fd, map))
 	{
 		close(fd);
 		exit (1);

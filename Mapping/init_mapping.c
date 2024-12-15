@@ -14,7 +14,6 @@
 
 void	ft_player_start(t_mlx *mlx)
 {
-	char		*relative_path;
 	int			img_width;
 	int			img_height;
 	t_player	*player;
@@ -87,7 +86,7 @@ void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
 
 	x = 0;
 	index = 0;
-	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, 32, 32);
+	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, (int *)32, (int *)32);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;

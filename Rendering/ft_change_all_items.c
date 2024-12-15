@@ -12,7 +12,7 @@
 
 #include "../Headers/so_long.h"
 
-void	ft_delete_collect(t_mlx *mlx, t_player player, t_collectible *collec)
+void	ft_delete_collect(t_mlx *mlx, t_player player)
 {
 	t_collectible	*tmp;
 	t_collectible	*prev;

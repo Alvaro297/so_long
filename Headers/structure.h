@@ -13,17 +13,6 @@
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
-typedef struct s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			width_win;
-	int			height_win;
-	int			moves;
-	t_map		map;
-	t_player	player;
-}	t_mlx;
-
 typedef struct s_collectible
 {
 	int		x;
@@ -39,17 +28,24 @@ typedef struct s_wall
 	void	*img;
 }	t_wall;
 
+typedef struct s_map_fill
+{
+	int		x;
+	int		y;
+} t_map_fill;
+
+
 typedef struct s_map
 {
-	char			**matriz;
-	int				height;
-	int				width;
-	int				n_collects;
-	int				n_wall;
-	int				n_players;
-	int				n_exits;
-	t_collectible	*collectibles;
-	t_wall			*wall;
+	char					**matriz;
+	int						height;
+	int						width;
+	int						n_collects;
+	int						n_wall;
+	int						n_players;
+	int						n_exits;
+	t_collectible			*collectibles;
+	t_wall					*wall;
 }	t_map;
 
 typedef struct s_player
@@ -62,10 +58,15 @@ typedef struct s_player
 	int		y;
 }	t_player;
 
-typedef struct s_map_fill
+typedef struct s_mlx
 {
-	int		x;
-	int		y;
-}	t_map_fill;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	int					width_win;
+	int					height_win;
+	int					moves;
+	t_map				map;
+	t_player			player;
+}	t_mlx;
 
-#endif 
+#endif

@@ -37,23 +37,27 @@
 int		main(int argc, char **argv);
 void	ft_init(char *argv, t_mlx *mlx, t_map *map);
 // ---- Mapping ---- //
+void	ft_init_player(t_player *player);
+void	ft_init_map(t_map *map);
+void	ft_init_mlx(t_mlx *mlx);
 void	ft_init_mapping(int fd, t_map *map);
-void	ft_player_start(t_mlx *mlx);
-bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx);
-bool	ft_bad_width(int fd, t_map *map);
-bool	ft_bad_implementation(int fd, t_map *map);
-int		ft_check_map_characters(char *line, t_map *map, int f);
-int		ft_check_map_items(char *line, t_map *map, int f);
+// -- Init Mappìng -- //
 void	ft_player_start(t_mlx *mlx);
 void	ft_collec_start(t_mlx *mlx, t_map *map);
 void	ft_localization(t_mlx *mlx, t_player *player);
 void	ft_localization_collec(t_mlx *mlx, t_collectible *collec);
-void	ft_init_map(t_map *map);
-void	ft_init_mlx(t_mlx *mlx);
-void	ft_init_player(t_player *player);
-void	ft_wall_start(t_mlx *mlx, t_map *map);
 void	ft_init_all_map(t_mlx *mlx, t_map *map);
+// -- Init Wall -- //
+void	ft_wall_start(t_mlx *mlx, t_map *map);
+void	ft_localization_wall(t_mlx *mlx, t_wall *wall);
+// -- Validating Flood Fill -- //
 bool	ft_flood_fill(t_mlx *mlx, t_map *map);
+// -- Validating Map -- //
+bool	ft_validation_map(char	*map_src, int fd, t_map *map);
+bool	ft_bad_width(int fd, t_map *map);
+bool	ft_bad_implementation(int fd, t_map *map);
+int		ft_check_map_characters(char *line, t_map *map, int f);
+int		ft_check_map_items(char *line, t_map *map);
 // ---- Draw images ---- //
 void	ft_draw_background(t_mlx *mlx);
 void	ft_draw_collections_player(t_mlx *mlx);
@@ -64,13 +68,14 @@ void	ft_render_map(t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
 void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background);
 void	ft_change_player_texture(t_mlx *mlx, t_player player, int key);
-void	ft_delete_collect(t_mlx *mlx, t_player player, t_collectible *collec);
-// ---- Win game ---- //
+void	ft_delete_collect(t_mlx *mlx, t_player player);
+// ---- Endgame ---- //
 void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode);
 int		ft_exit_fail(t_mlx *mlx);
 void	ft_win_game(t_mlx *mlx);
 // ---- Free game ---- //
 void	ft_free_all(t_mlx *mlx);
 void	ft_free_map(t_map *map);
+void	ft_free_player(t_player *player);
 void	ft_cleanup(t_mlx *mlx);
 #endif

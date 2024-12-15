@@ -26,7 +26,7 @@ void	ft_wall_start(t_mlx *mlx, t_map *map)
 	map->wall = wall;
 }
 
-void	ft_localization_wall(t_mlx *mlx, t_collectible *collec)
+void	ft_localization_wall(t_mlx *mlx, t_wall *wall)
 {
 	int		x;
 	int		y;
@@ -35,7 +35,7 @@ void	ft_localization_wall(t_mlx *mlx, t_collectible *collec)
 
 	x = 0;
 	index = 0;
-	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, 32, 32);
+	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, (int *)32, (int *)32);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;
@@ -43,9 +43,9 @@ void	ft_localization_wall(t_mlx *mlx, t_collectible *collec)
 		{
 			if (mlx->map.matriz[x][y] == '1')
 			{
-				collec[index].x = x;
-				collec[index].y = y;
-				collec[index].img = wall_img;
+				wall[index].x = x;
+				wall[index].y = y;
+				wall[index].img = wall_img;
 				index++;
 			}
 			y++;

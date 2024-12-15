@@ -12,7 +12,7 @@
 
 #include "../Headers/so_long.h"
 
-bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
+bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 {
 	ft_init_map(map);
 	if (ft_strstr(map_src, ".ber") == NULL)
@@ -37,7 +37,6 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map, t_mlx *mlx)
 bool	ft_bad_width(int fd, t_map *map)
 {
 	char	*line;
-	int		line_length;
 
 	line = get_next_line(fd);
 	if (line != NULL)
@@ -66,19 +65,15 @@ bool	ft_bad_width(int fd, t_map *map)
 bool	ft_bad_implementation(int fd, t_map *map)
 {
 	char	*line;
-	int		line_length;
-	int		column;
 	int		f;
 
 	f = 0;
-	line_length = 0;
-	column = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (ft_check_map_characters(line, map, f) == 1)
 			return (true);
-		if (ft_check_map_items(line, map, f) == 1)
+		if (ft_check_map_items(line, map) == 1)
 			return (true);
 		line = get_next_line(fd);
 		f++;
@@ -111,7 +106,7 @@ int	ft_check_map_characters(char *line, t_map *map, int f)
 	return (0);
 }
 
-int	ft_check_map_items(char *line, t_map *map, int f)
+int	ft_check_map_items(char *line, t_map *map)
 {
 	int	i;
 

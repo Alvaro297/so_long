@@ -12,18 +12,7 @@
 
 #include "../Headers/so_long.h"
 
-void	ft_free_all(t_mlx *mlx)
-{
-	ft_free_map(&mlx->map);
-	ft_free_collect(mlx->map.collectibles);
-	ft_free_wall(mlx->map.wall);
-	free(mlx->map.wall);
-	ft_free_player(&mlx->player);
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	exit(0);
-}
-
-static void	ft_free_player(t_player *player)
+void	ft_free_player(t_player *player)
 {
 	free(player->img_up);
 	free(player->img_down);
@@ -64,4 +53,23 @@ void	ft_free_map(t_map *map)
 	while (i < map->height)
 		free(map->matriz[i++]);
 	free(map->matriz);
+}
+
+
+void	ft_free_all(t_mlx *mlx)
+{
+	if (mlx->win_ptr)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	if (mlx->mlx_ptr)
+	{
+		mlx_destroy_display(mlx->mlx_ptr);
+		free(mlx->mlx_ptr);
+	}
+	ft_free_map(&mlx->map);
+	ft_free_collect(mlx->map.collectibles);
+	ft_free_wall(mlx->map.wall);
+	free(mlx->map.wall);
+	ft_free_player(&mlx->player);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	exit(0);
 }

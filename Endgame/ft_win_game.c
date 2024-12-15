@@ -12,6 +12,7 @@
 
 #include "../Headers/so_long.h"
 
+/*
 void	ft_validate_lose_game(t_mlx *mlx, t_player player, int keycode)
 {
 	if (keycode == KEY_W && mlx->map.matriz[player.y + 1][player.x] == 'V')
@@ -22,7 +23,7 @@ void	ft_validate_lose_game(t_mlx *mlx, t_player player, int keycode)
 		ft_lose_game(mlx);
 	else if (keycode == KEY_D && mlx->map.matriz[player.y][player.x - 1] == 'V')
 		ft_lose_game(mlx);
-}
+}*/
 
 void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode)
 {
@@ -35,13 +36,13 @@ void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode)
 	else if (keycode == KEY_D && mlx->map.matriz[player.y][player.x - 1] == 'E')
 		ft_win_game(mlx);
 }
-
+/*
 void	ft_lose_game(t_mlx *mlx)
 {
 	ft_printf("You lose!\n");
 	ft_free_all(mlx);
 	exit(0);
-}
+}*/
 
 void	ft_win_game(t_mlx *mlx)
 {
