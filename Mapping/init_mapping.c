@@ -39,19 +39,47 @@ void	ft_player_start(t_mlx *mlx)
 	mlx->player = *player;
 }
 
+static void	ft_localization_collec(t_mlx *mlx, t_collectible *collec, int x, int y)
+{
+	int		img_height;
+	int		img_width;
+	int		index;
+	void	*collectible_img;
+
+	index = 0;
+	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH,
+			&img_width, &img_height);
+	while (mlx->map.matriz[x])
+	{
+		y = 0;
+		while (mlx->map.matriz[x][y])
+		{
+			if (mlx->map.matriz[x][y] == 'C')
+			{
+				collec[index].x = x;
+				collec[index].y = y;
+				collec[index].img = collectible_img;
+				index++;
+			}
+			y++;
+		}
+		x++;
+	}
+    ft_printf("Total collectibles initialized: %d\n", index);
+}
+
 void	ft_collec_start(t_mlx *mlx, t_map *map)
 {
 	t_collectible	*collectibles;
 
 	collectibles = malloc(sizeof(t_collectible) * map->n_collects);
-	ft_printf("%i\n", map->n_collects);
 	if (!collectibles)
 	{
 		perror("Error\nmalloc failed\n");
 		ft_free_map(map);
 		exit(1);
 	}
-	ft_localization_collec(mlx, collectibles);
+	ft_localization_collec(mlx, collectibles, 0, 0);
 	map->collectibles = collectibles;
 }
 
@@ -78,41 +106,12 @@ void	ft_localization(t_mlx *mlx, t_player *player)
 	}
 }
 
-void	ft_localization_collec(t_mlx *mlx, t_collectible *collec)
-{
-	int		x;
-	int		y;
-	int		index;
-	void	*collectible_img;
-
-	x = 0;
-	index = 0;
-	collectible_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH,
-			(int *)32, (int *)32);
-	while (mlx->map.matriz[x])
-	{
-		y = 0;
-		while (mlx->map.matriz[x][y])
-		{
-			if (mlx->map.matriz[x][y] == 'C')
-			{
-				collec[index].x = x;
-				collec[index].y = y;
-				collec[index].img = collectible_img;
-				index++;
-			}
-			y++;
-		}
-		x++;
-	}
-}
-
 void	ft_init_all_map(t_mlx *mlx, t_map *map)
 {
-	ft_collec_start(mlx, map);
-	ft_wall_start(mlx, map);
 	mlx->map = *map;
 	mlx->height_win = map->height * TILE_SIZE;
 	mlx->width_win = map->width * TILE_SIZE;
+	ft_collec_start(mlx, map);
+	ft_wall_start(mlx, map);
 	mlx->moves = 0;
 }

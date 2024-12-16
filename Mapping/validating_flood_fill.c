@@ -17,15 +17,23 @@ static bool	validate_flood_fill(char **tab)
 	int		i;
 	int		j;
 
+	i = 0;
 	while (tab[i])
 	{
+		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] != '1' && tab[i][j] != 'E')
+			if (tab[i][j] != '1' && tab[i][j] != 'E' && tab[i][j] != '\r'
+				&& tab[i][j] != '\n')
+			{
+				ft_printf("Invalid character found at i = %d, j = %d, char = %i\n", i, j, tab[i][j]);
+				getchar();
 				return (false);
+			}
 			j++;
 		}
 		i++;
+
 	}
 	return (true);
 }
@@ -33,10 +41,10 @@ static bool	validate_flood_fill(char **tab)
 static void	fill(char **tab, t_map_fill size, t_map_fill cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0
-		|| cur.x >= size.x || tab[cur.y][cur.x] == '1'
-		|| tab[cur.y][cur.x] == 'E')
+		|| cur.x >= size.x || tab[cur.x][cur.y] == '1'
+		|| tab[cur.x][cur.y] == 'E')
 		return ;
-	tab[cur.y][cur.x] = '1';
+	tab[cur.x][cur.y] = '1';
 	fill(tab, size, (t_map_fill){cur.x - 1, cur.y}, to_fill);
 	fill(tab, size, (t_map_fill){cur.x + 1, cur.y}, to_fill);
 	fill(tab, size, (t_map_fill){cur.x, cur.y - 1}, to_fill);

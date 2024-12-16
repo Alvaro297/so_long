@@ -31,6 +31,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 	fd = open(argv, O_RDONLY);
 	ft_init_mapping(fd, map);
 	ft_init_all_map(mlx, map);
+	ft_player_start(mlx);
 	if (!ft_flood_fill(mlx, map))
 	{
 		close(fd);
@@ -48,7 +49,6 @@ int	main(int argc, char **argv)
 	argc = 1;
 	ft_init_mlx(&mlx);
 	ft_init(argv[argc], &mlx, &map);
-	ft_player_start(&mlx);
 	mlx.mlx_ptr = mlx_init();
 	if (!mlx.mlx_ptr)
 		return (1);
@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 		ft_cleanup(&mlx);
 		return (1);
 	}
+	getchar();
 	ft_draw_images(&mlx);
 	ft_render_map(&mlx);
 	mlx_loop(mlx.mlx_ptr);

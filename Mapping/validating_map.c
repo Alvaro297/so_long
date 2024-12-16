@@ -26,7 +26,6 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 		return (false);
 	}
 	close(fd);
-	printf("map_src: %s\n", map_src);
 	fd = open(map_src, O_RDONLY);
 	if (ft_bad_implementation(fd, map))
 	{
@@ -46,9 +45,6 @@ bool	ft_bad_width(int fd, t_map *map)
 	{
 		map->width = ft_strlen_mod(line);
 		map->height++;
-		printf("map->width: %d\n", map->width);
-		printf("map->height: %d\n", map->height);
-		getchar();
 		while (line != NULL)
 		{
 			map->height++;
@@ -63,6 +59,8 @@ bool	ft_bad_width(int fd, t_map *map)
 		if (map->height == map->width)
 			return (true);
 	}
+	map->height--;
+	map->width--;
 	if (map->height == 0 || map->width == 0)
 		return (true);
 	return (false);
@@ -126,7 +124,9 @@ int	ft_check_map_items(char *line, t_map *map)
 	while (line[i])
 	{
 		if (line[i] == 'E' || line[i] == 'C'
-			|| line[i] == 'P' || line[i] == '1')
+			|| line[i] == 'P' || line[i] == '1'
+			|| line [i] == '0' || line[i] == '\r'
+			|| line[i] == '\n')
 		{
 			if (line[i] == '1')
 				map->n_wall++;
@@ -137,12 +137,9 @@ int	ft_check_map_items(char *line, t_map *map)
 			if (line[i] == 'P')
 				map->n_players++;
 		}
+		else
+			return (1);
 		i++;
-		printf("n_wall: %d\n", map->n_wall);
-		printf("n_exits: %d\n", map->n_exits);
-		printf("n_collects: %d\n", map->n_collects);
-		printf("n_players: %d\n", map->n_players);
-		getchar();
 	}
 	return (0);
 }

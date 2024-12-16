@@ -45,7 +45,6 @@ void	ft_init_mapping(int fd, t_map *map);
 void	ft_player_start(t_mlx *mlx);
 void	ft_collec_start(t_mlx *mlx, t_map *map);
 void	ft_localization(t_mlx *mlx, t_player *player);
-void	ft_localization_collec(t_mlx *mlx, t_collectible *collec);
 void	ft_init_all_map(t_mlx *mlx, t_map *map);
 // -- Init Wall -- //
 void	ft_wall_start(t_mlx *mlx, t_map *map);

@@ -16,7 +16,7 @@ void	ft_wall_start(t_mlx *mlx, t_map *map)
 {
 	t_wall	*wall;
 
-	wall = malloc(sizeof(t_wall) * map->n_collects);
+	wall = malloc(sizeof(t_wall) * map->n_wall);
 	if (!wall)
 	{
 		perror("Error\nmalloc failed\n");
