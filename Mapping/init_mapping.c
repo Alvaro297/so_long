@@ -44,6 +44,7 @@ void	ft_collec_start(t_mlx *mlx, t_map *map)
 	t_collectible	*collectibles;
 
 	collectibles = malloc(sizeof(t_collectible) * map->n_collects);
+	ft_printf("%i\n", map->n_collects);
 	if (!collectibles)
 	{
 		perror("Error\nmalloc failed\n");

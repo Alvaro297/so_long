@@ -15,7 +15,7 @@
 bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 {
 	ft_init_map(map);
-	if (ft_strstr((const char *)map_src, (const char *)".ber") == NULL)
+	if (ft_strstr(map_src, ".ber") == NULL)
 	{
 		ft_printf("\033cError invalid map\n");
 		return (false);
@@ -25,6 +25,8 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 		ft_printf("\033cError invalid width\n");
 		return (false);
 	}
+	close(fd);
+	fd = open(map_src, O_RDONLY);
 	if (ft_bad_implementation(fd, map))
 	{
 		ft_printf("\033cError invalid bad implemets of player,\
@@ -82,27 +84,31 @@ bool	ft_bad_implementation(int fd, t_map *map)
 
 int	ft_check_map_characters(char *line, t_map *map, int f)
 {
-	int	i;
+    int	i;
 
-	i = 0;
-	while (line[i])
-	{
-		if (f == 0 || f == map -> height)
+    i = -1;
+    while (line[++i])
+    {
+		if (line[i] >= 9 && line[i] <= 13)
 		{
-			if (line[i] != '1')
-				return (1);
+			i++;
+			continue ;
 		}
-		else
-		{
-			if (i == 0 || i == map -> width)
-			{
-				if (line[i] != '1')
-					return (1);
-			}
-		}
-		i++;
-	}
-	return (0);
+        if (f == 0 || f == map->height)
+        {
+            if (line[i] != '1')
+                return (1);
+        }
+        else
+        {
+            if (i == 0 || i == map->width - 1)
+            {
+                if (line[i] != '1')
+                    return (1);
+            }
+        }
+    }
+    return (0);
 }
 
 int	ft_check_map_items(char *line, t_map *map)
@@ -126,6 +132,10 @@ int	ft_check_map_items(char *line, t_map *map)
 		}
 		i++;
 	}
+	ft_printf("Number of collectibles: %d\n", map->n_collects);
+    ft_printf("Number of exits: %d\n", map->n_exits);
+    ft_printf("Number of players: %d\n", map->n_players);
+	getchar();
 	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
 		return (1);
 	return (0);

@@ -27,6 +27,8 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 		close(fd);
 		exit (1);
 	}
+	close(fd);
+	fd = open(argv, O_RDONLY);
 	ft_init_mapping(fd, map);
 	ft_init_all_map(mlx, map);
 	if (!ft_flood_fill(mlx, map))
