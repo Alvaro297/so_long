@@ -20,4 +20,3 @@ int	ft_exit_fail(t_mlx *mlx)
 	exit(0);
 	return (0);
 }
-

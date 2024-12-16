@@ -50,6 +50,7 @@ void	ft_init_mapping(int fd, t_map *map)
 {
 	int		i;
 	char	*line;
+	char	*trimmed_line;
 
 	map->matriz = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!map->matriz)
@@ -58,7 +59,9 @@ void	ft_init_mapping(int fd, t_map *map)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		map->matriz[i] = line;
+		trimmed_line = ft_strtrim(line, "\n");
+		free(line);
+		map->matriz[i] = trimmed_line;
 		line = get_next_line(fd);
 		i++;
 	}
