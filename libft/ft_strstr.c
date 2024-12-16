@@ -26,7 +26,7 @@ static char	*find_out(char *str, char *to_find, size_t i)
 	return ((char *)(str + i));
 }
 
-char	*strstr(const char *s1, const char *s2)
+char	*ft_strstr(const char *s1, const char *s2)
 {
 	size_t	i;
 	char	*result;

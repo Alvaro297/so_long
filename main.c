@@ -22,7 +22,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 		ft_printf("\033cError invalid path\n");
 		exit (1);
 	}
-	if (!ft_validation_map(argv[1], fd, map))
+	if (!ft_validation_map(argv, fd, map))
 	{
 		close(fd);
 		exit (1);
@@ -43,12 +43,13 @@ int	main(int argc, char **argv)
 	t_mlx	mlx;
 	t_map	map;
 
+	argc = 1;
 	ft_init_mlx(&mlx);
-	ft_init(argv[1], &mlx, &map);
+	ft_init(argv[argc], &mlx, &map);
 	ft_player_start(&mlx);
 	mlx.mlx_ptr = mlx_init();
 	if (!mlx.mlx_ptr)
-		return ;
+		return (1);
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win,
 			mlx.height_win, "so_long");
 	if (!mlx.win_ptr)
@@ -61,4 +62,5 @@ int	main(int argc, char **argv)
 	ft_render_map(&mlx);
 	mlx_loop(mlx.mlx_ptr);
 	perror("\033Error\nloop failed\n");
+	exit(1);
 }

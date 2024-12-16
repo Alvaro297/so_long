@@ -15,12 +15,12 @@
 bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 {
 	ft_init_map(map);
-	if (ft_strstr(map_src, ".ber") == NULL)
+	if (ft_strstr((const char *)map_src, (const char *)".ber") == NULL)
 	{
 		ft_printf("\033cError invalid map\n");
 		return (false);
-	}
-	if (ft_bad_width(fd, map))
+	}	
+	if (ft_bad_width(fd, map) == true)
 	{
 		ft_printf("\033cError invalid width\n");
 		return (false);
@@ -43,15 +43,14 @@ bool	ft_bad_width(int fd, t_map *map)
 	{
 		map->width = ft_strlen_mod(line);
 		map->height++;
-		while (line != NULL)
+		while ((line = get_next_line(fd)) != NULL)
 		{
-			line = get_next_line(fd);
-			if (line == NULL || map->width != ft_strlen_mod(line))
+			map->height++;
+			if (map->width != ft_strlen_mod(line))
 			{
 				free(line);
 				return (true);
 			}
-			map->height++;
 			free(line);
 		}
 		if (map->height == map->width)

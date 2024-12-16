@@ -3,12 +3,12 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(MLXDIR)
 NAME = so_long
 
 # Directorios
-SRCDIRS = Endgame Free_game Init_game Mapping Rendering Draw_images
+SRCDIRS = Endgame Free_game Init_game Mapping Rendering Draw_images libft
 INCDIR = includes
 MLXDIR = minilibx-linux
 
 # Archivos fuente
-SRCS = $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))
+SRCS = $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c)) main.c
 
 # Archivos objeto
 OBJS = $(SRCS:.c=.o)

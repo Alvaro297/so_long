@@ -34,7 +34,7 @@ void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background)
 		player.x += 1;
 	if (mlx->map.matriz[player.y][player.x + 1] == 'C'
 		&& mlx->map.n_collects > 0)
-		ft_delete_collect(mlx, player, mlx->map.collectibles);
+		ft_delete_collect(mlx, player);
 	ft_validate_win_game(mlx, player, key);
 	ft_change_player_texture(mlx, player, key);
 	ft_printf("You moved %d times.\n", ++mlx->moves);
