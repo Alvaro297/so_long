@@ -19,13 +19,14 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 	{
 		ft_printf("\033cError invalid map\n");
 		return (false);
-	}	
+	}
 	if (ft_bad_width(fd, map) == true)
 	{
 		ft_printf("\033cError invalid width\n");
 		return (false);
 	}
 	close(fd);
+	printf("map_src: %s\n", map_src);
 	fd = open(map_src, O_RDONLY);
 	if (ft_bad_implementation(fd, map))
 	{
@@ -45,10 +46,14 @@ bool	ft_bad_width(int fd, t_map *map)
 	{
 		map->width = ft_strlen_mod(line);
 		map->height++;
-		while ((line = get_next_line(fd)) != NULL)
+		printf("map->width: %d\n", map->width);
+		printf("map->height: %d\n", map->height);
+		getchar();
+		while (line != NULL)
 		{
 			map->height++;
-			if (map->width != ft_strlen_mod(line))
+			line = get_next_line(fd);
+			if (line != NULL && map->width != ft_strlen_mod(line))
 			{
 				free(line);
 				return (true);
@@ -79,36 +84,38 @@ bool	ft_bad_implementation(int fd, t_map *map)
 		line = get_next_line(fd);
 		f++;
 	}
+	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
+		return (true);
 	return (false);
 }
 
 int	ft_check_map_characters(char *line, t_map *map, int f)
 {
-    int	i;
+	int	i;
 
-    i = -1;
-    while (line[++i])
-    {
+	i = -1;
+	while (line[++i])
+	{
 		if (line[i] >= 9 && line[i] <= 13)
 		{
 			i++;
 			continue ;
 		}
-        if (f == 0 || f == map->height)
-        {
-            if (line[i] != '1')
-                return (1);
-        }
-        else
-        {
-            if (i == 0 || i == map->width - 1)
-            {
-                if (line[i] != '1')
-                    return (1);
-            }
-        }
-    }
-    return (0);
+		if (f == 0 || f == map->height)
+		{
+			if (line[i] != '1')
+				return (1);
+		}
+		else
+		{
+			if (i == 0 || i == map->width - 1)
+			{
+				if (line[i] != '1')
+					return (1);
+			}
+		}
+	}
+	return (0);
 }
 
 int	ft_check_map_items(char *line, t_map *map)
@@ -131,12 +138,11 @@ int	ft_check_map_items(char *line, t_map *map)
 				map->n_players++;
 		}
 		i++;
+		printf("n_wall: %d\n", map->n_wall);
+		printf("n_exits: %d\n", map->n_exits);
+		printf("n_collects: %d\n", map->n_collects);
+		printf("n_players: %d\n", map->n_players);
+		getchar();
 	}
-	ft_printf("Number of collectibles: %d\n", map->n_collects);
-    ft_printf("Number of exits: %d\n", map->n_exits);
-    ft_printf("Number of players: %d\n", map->n_players);
-	getchar();
-	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
-		return (1);
 	return (0);
 }

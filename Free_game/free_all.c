@@ -55,7 +55,6 @@ void	ft_free_map(t_map *map)
 	free(map->matriz);
 }
 
-
 void	ft_free_all(t_mlx *mlx)
 {
 	if (mlx->win_ptr)

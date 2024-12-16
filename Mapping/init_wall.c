@@ -35,7 +35,8 @@ void	ft_localization_wall(t_mlx *mlx, t_wall *wall)
 
 	x = 0;
 	index = 0;
-	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH, (int *)32, (int *)32);
+	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH,
+			(int *)32, (int *)32);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;
