@@ -15,29 +15,27 @@
 void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background)
 {
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img_background,
-		(player.x * 32), (player.y * 32));
-	if (key == KEY_W && mlx->map.matriz[player.y - 1][player.x] != '1'
-		&& (mlx->map.matriz[player.y - 1][player.x] != 'E'
+		(mlx->player.y * TILE_SIZE), (mlx->player.x * TILE_SIZE));
+	if (mlx->map.matriz[mlx->player.x - 1][mlx->player.y] != '1' &&
+		key == KY_W && (mlx->map.matriz[mlx->player.x - 1][mlx->player.y] != 'E'
 		|| mlx->map.n_collects == 0))
-		player.y -= 1;
-	else if (key == KEY_S && mlx->map.matriz[player.y + 1][player.x] != '1'
-		&& (mlx->map.matriz[player.y + 1][player.x] != 'E'
+		mlx->player.x -= 1;
+	else if (mlx->map.matriz[mlx->player.x + 1][mlx->player.y] != '1' &&
+		key == KY_S && (mlx->map.matriz[mlx->player.x + 1][mlx->player.y] != 'E'
 		|| mlx->map.n_collects == 0))
-		player.y += 1;
-	else if (key == KEY_A && mlx->map.matriz[player.y][player.x - 1] != '1'
-		&& (mlx->map.matriz[player.y][player.x - 1] != 'E'
+		mlx->player.x += 1;
+	else if (mlx->map.matriz[mlx->player.x][mlx->player.y - 1] != '1' &&
+		key == KY_A && (mlx->map.matriz[mlx->player.x][mlx->player.y - 1] != 'E'
 		|| mlx->map.n_collects == 0))
-		player.x -= 1;
-	else if (key == KEY_D && mlx->map.matriz[player.y][player.x + 1] != '1'
-		&& (mlx->map.matriz[player.y][player.x + 1] != 'E'
+		mlx->player.y -= 1;
+	else if (mlx->map.matriz[mlx->player.x][mlx->player.y + 1]!= '1' &&
+		key == KY_D && (mlx->map.matriz[mlx->player.x][mlx->player.y + 1] != 'E'
 		|| mlx->map.n_collects == 0))
-		player.x += 1;
-	if (mlx->map.matriz[player.y][player.x + 1] == 'C'
-		&& mlx->map.n_collects > 0)
-		ft_delete_collect(mlx, player);
-	ft_validate_win_game(mlx, player, key);
+		mlx->player.y += 1;
+	if (mlx->map.matriz[mlx->player.x][mlx->player.y] == 'C')
+		ft_delete_collect(mlx);
+	ft_validate_win_game(mlx, key);
 	ft_change_player_texture(mlx, player, key);
-	ft_printf("You moved %d times.\n", ++mlx->moves);
 	mlx_do_sync(mlx->mlx_ptr);
 }
 
@@ -51,8 +49,8 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 			&img_width, &img_height);
 	if (keycode == ESC)
 		ft_exit_fail(mlx);
-	else if (keycode == KEY_W || keycode == KEY_S
-		|| keycode == KEY_A || keycode == KEY_D)
+	else if (keycode == KY_W || keycode == KY_S
+		|| keycode == KY_A || keycode == KY_D)
 		ft_move(mlx, mlx->player, keycode, img_background);
 	return (0);
 }

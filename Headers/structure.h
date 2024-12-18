@@ -18,13 +18,12 @@ typedef struct s_collectible
 	int		x;
 	int		y;
 	void	*img;
-	struct s_collectible	*next;
 }	t_collectible;
 
 typedef struct s_wall
 {
-	int		x;
-	int		y;
+	int		height;
+	int		width;
 	void	*img;
 }	t_wall;
 

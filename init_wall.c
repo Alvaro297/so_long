@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/so_long.h"
+#include "Headers/so_long.h"
 
 void	ft_wall_start(t_mlx *mlx, t_map *map)
 {
@@ -20,23 +20,23 @@ void	ft_wall_start(t_mlx *mlx, t_map *map)
 	if (!wall)
 	{
 		perror("Error\nmalloc failed\n");
+		free(wall);
 		exit(1);
 	}
-	ft_localization_wall(mlx, wall);
-	map->wall = wall;
+	ft_localization_wall(mlx, wall, 0, 0);
+	mlx->map.wall = wall;
 }
 
-void	ft_localization_wall(t_mlx *mlx, t_wall *wall)
+void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y)
 {
-	int		x;
-	int		y;
+	int		img_height;
+	int		img_width;
 	int		index;
 	void	*wall_img;
 
-	x = 0;
 	index = 0;
-	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, COLLEC_PATH,
-			(int *)32, (int *)32);
+	wall_img = mlx_xpm_file_to_image(mlx->mlx_ptr, WALL_PATH,
+			&img_width, &img_height);
 	while (mlx->map.matriz[x])
 	{
 		y = 0;
@@ -44,8 +44,8 @@ void	ft_localization_wall(t_mlx *mlx, t_wall *wall)
 		{
 			if (mlx->map.matriz[x][y] == '1')
 			{
-				wall[index].x = x;
-				wall[index].y = y;
+				wall[index].height = x;
+				wall[index].width = y;
 				wall[index].img = wall_img;
 				index++;
 			}

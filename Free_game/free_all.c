@@ -20,30 +20,32 @@ void	ft_free_player(t_player *player)
 	free(player->img_right);
 }
 
-static void	ft_free_collect(t_collectible *collectibles)
+/*
+static void	ft_free_collect(t_collectible *collectibles, int n_collects)
 {
-	t_collectible	*tmp;
+	int		i;
 
-	while (collectibles)
+	i = 0;
+	while (i < n_collects)
 	{
-		tmp = collectibles->next;
-		free(collectibles->img);
-		free(collectibles);
-		collectibles = tmp;
+        ft_printf("Checking collectible %d at position: (%d, %d), address: %p\n", i, collectibles[i].x, collectibles[i].y, (void *)collectibles[i].img);
+		i++;
 	}
+	free(collectibles);
 }
 
-static void	ft_free_wall(t_wall *wall)
+static void	ft_free_wall(t_wall *wall, int n_wall)
 {
 	int	i;
 
 	i = 0;
-	while (i < wall->x)
+	while (i < n_wall)
 	{
 		free(wall[i].img);
 		i++;
 	}
-}
+	free(wall);
+}*/
 
 void	ft_free_map(t_map *map)
 {
@@ -65,10 +67,10 @@ void	ft_free_all(t_mlx *mlx)
 		free(mlx->mlx_ptr);
 	}
 	ft_free_map(&mlx->map);
-	ft_free_collect(mlx->map.collectibles);
-	ft_free_wall(mlx->map.wall);
-	free(mlx->map.wall);
 	ft_free_player(&mlx->player);
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	free(mlx->map.collectibles[0].img);
+	free(mlx->map.collectibles);
+	free(mlx->map.wall[0].img);
+	free(mlx->map.wall);
 	exit(0);
 }

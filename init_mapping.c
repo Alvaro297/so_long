@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/so_long.h"
+#include "Headers/so_long.h"
 
 void	ft_player_start(t_mlx *mlx)
 {
@@ -25,16 +25,13 @@ void	ft_player_start(t_mlx *mlx)
 		exit(1);
 	}
 	player->img_up = mlx_xpm_file_to_image(mlx->mlx_ptr,
-			"../Textures/Gojo.xpm", &img_width, &img_height);
+			PLAYER_UP, &img_width, &img_height);
 	player->img_down = mlx_xpm_file_to_image(mlx->mlx_ptr,
-			"../Textures/Gojo_back.xpm",
-			&img_width, &img_height);
+			PLAYER_DOWN, &img_width, &img_height);
 	player->img_left = mlx_xpm_file_to_image(mlx->mlx_ptr,
-			"../Textures/Gojo_left.xpm",
-			&img_width, &img_height);
+			PLAYER_LEFT, &img_width, &img_height);
 	player->img_right = mlx_xpm_file_to_image(mlx->mlx_ptr,
-			"../Textures/Gojo_right.xpm",
-			&img_width, &img_height);
+			PLAYER_RIGHT, &img_width, &img_height);
 	ft_localization(mlx, player);
 	mlx->player = *player;
 }
@@ -65,7 +62,6 @@ static void	ft_localization_collec(t_mlx *mlx, t_collectible *collec, int x, int
 		}
 		x++;
 	}
-    ft_printf("Total collectibles initialized: %d\n", index);
 }
 
 void	ft_collec_start(t_mlx *mlx, t_map *map)
@@ -80,7 +76,7 @@ void	ft_collec_start(t_mlx *mlx, t_map *map)
 		exit(1);
 	}
 	ft_localization_collec(mlx, collectibles, 0, 0);
-	map->collectibles = collectibles;
+	mlx->map.collectibles = collectibles;
 }
 
 void	ft_localization(t_mlx *mlx, t_player *player)

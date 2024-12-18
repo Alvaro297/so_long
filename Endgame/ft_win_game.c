@@ -25,15 +25,19 @@ void	ft_validate_lose_game(t_mlx *mlx, t_player player, int keycode)
 		ft_lose_game(mlx);
 }*/
 
-void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode)
+void	ft_validate_win_game(t_mlx *mlx, int keycode)
 {
-	if (keycode == KEY_W && mlx->map.matriz[player.y + 1][player.x] == 'E')
+	if (keycode == KY_W
+		&& mlx->map.matriz[mlx->player.x - 1][mlx->player.y] == 'E')
 		ft_win_game(mlx);
-	else if (keycode == KEY_S && mlx->map.matriz[player.y - 1][player.x] == 'E')
+	else if (keycode == KY_S
+		&& mlx->map.matriz[mlx->player.x + 1][mlx->player.y] == 'E')
 		ft_win_game(mlx);
-	else if (keycode == KEY_A && mlx->map.matriz[player.y][player.x + 1] == 'E')
+	else if (keycode == KY_A
+		&& mlx->map.matriz[mlx->player.x][mlx->player.y - 1] == 'E')
 		ft_win_game(mlx);
-	else if (keycode == KEY_D && mlx->map.matriz[player.y][player.x - 1] == 'E')
+	else if (keycode == KY_D 
+		&& mlx->map.matriz[mlx->player.x][mlx->player.y + 1] == 'E')
 		ft_win_game(mlx);
 }
 /*

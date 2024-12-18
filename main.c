@@ -48,19 +48,18 @@ int	main(int argc, char **argv)
 
 	argc = 1;
 	ft_init_mlx(&mlx);
-	ft_init(argv[argc], &mlx, &map);
 	mlx.mlx_ptr = mlx_init();
 	if (!mlx.mlx_ptr)
 		return (1);
+	ft_init(argv[argc], &mlx, &map);
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win,
-			mlx.height_win, "so_long");
+		mlx.height_win, "so_long");
 	if (!mlx.win_ptr)
 	{
 		ft_printf("\033Error creating window\n");
 		ft_cleanup(&mlx);
 		return (1);
 	}
-	getchar();
 	ft_draw_images(&mlx);
 	ft_render_map(&mlx);
 	mlx_loop(mlx.mlx_ptr);

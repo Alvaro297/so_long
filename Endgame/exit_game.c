@@ -14,8 +14,7 @@
 
 int	ft_exit_fail(t_mlx *mlx)
 {
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	ft_printf("\033cYou press escape or x \n");
+	ft_printf("\033cYou press escape or x\n");
 	ft_free_all(mlx);
 	exit(0);
 	return (0);

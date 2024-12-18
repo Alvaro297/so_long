@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/so_long.h"
+#include "Headers/so_long.h"
 
 bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 {
@@ -56,13 +56,13 @@ bool	ft_bad_width(int fd, t_map *map)
 			}
 			free(line);
 		}
-		if (map->height == map->width)
-			return (true);
 	}
+	if (line)
+		free(line);
+	if (map->height == map->width || (map->height == 0 || map->width == 0))
+			return (true);
 	map->height--;
 	map->width--;
-	if (map->height == 0 || map->width == 0)
-		return (true);
 	return (false);
 }
 

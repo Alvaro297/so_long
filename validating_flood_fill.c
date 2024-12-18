@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/so_long.h"
+#include "Headers/so_long.h"
 
 static bool	validate_flood_fill(char **tab)
 {
@@ -27,7 +27,6 @@ static bool	validate_flood_fill(char **tab)
 				&& tab[i][j] != '\n')
 			{
 				ft_printf("Invalid character found at i = %d, j = %d, char = %i\n", i, j, tab[i][j]);
-				getchar();
 				return (false);
 			}
 			j++;
@@ -56,6 +55,30 @@ static void	flood_fill(char **tab, t_map_fill size, t_map_fill begin)
 	fill(tab, size, begin, tab[begin.y][begin.x]);
 }
 
+static char	**ft_matriz_copy(t_map *map)
+{
+	char **matriz_copy;
+	int		i;
+
+	i = 0;
+	matriz_copy = (char **)malloc(sizeof(char *) * map->height);
+	while (i < map -> height)
+	{
+		matriz_copy[i] = ft_strdup(map->matriz[i]);
+		if (!matriz_copy[i])
+		{
+			ft_printf("Error: Memory allocation failed for matriz_copy[%d]\n", i);
+			while (i-- > 0)
+				free(matriz_copy[i]);
+			free(matriz_copy);
+			return (NULL);
+		}
+		i++;
+	}
+	matriz_copy[map->height] = NULL;
+	return (matriz_copy);
+}
+
 bool	ft_flood_fill(t_mlx *mlx, t_map *map)
 {
 	char		**matriz_copy;
@@ -66,7 +89,7 @@ bool	ft_flood_fill(t_mlx *mlx, t_map *map)
 	size.y = map->width;
 	begin.x = mlx->player.x;
 	begin.y = mlx->player.y;
-	matriz_copy = map->matriz;
+	matriz_copy = ft_matriz_copy(map);
 	flood_fill(matriz_copy, size, begin);
 	if (!validate_flood_fill(matriz_copy))
 	{

@@ -3,12 +3,25 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(MLXDIR)
 NAME = so_long
 
 # Directorios
-SRCDIRS = Endgame Free_game Init_game Mapping Rendering Draw_images libft
+SRCDIRS = Endgame Free_game Init_game Rendering Draw_images libft
 INCDIR = includes
 MLXDIR = minilibx-linux
 
 # Archivos fuente
-SRCS = $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c)) main.c
+SRCS = $(wildcard Endgame/*.c) \
+		$(wildcard Free_game/*.c) \
+		$(wildcard Init_game/*.c) \
+		$(wildcard Rendering/*.c) \
+		$(wildcard Draw_images/*.c) \
+		$(wildcard libft/*.c) \
+		init_all.c \
+		init_mapping.c \
+		init_wall.c \
+		validating_flood_fill.c\
+		validating_map.c \
+		draw_images.c \
+		main.c
+
 
 # Archivos objeto
 OBJS = $(SRCS:.c=.o)
@@ -17,7 +30,7 @@ FT_PRINTF_DIR = ./libft/ft_printf_so_long
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 # Librerías
-MLX = $(MLXDIR)/libmlx_Linux.a
+MLX = $(MLXDIR)/libmlx.a
 LIBS = -L$(MLXDIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lbsd
 
 # Reglas

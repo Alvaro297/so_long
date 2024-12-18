@@ -22,6 +22,8 @@ void	ft_draw_background(t_mlx *mlx)
 
 	img_background = mlx_xpm_file_to_image(mlx -> mlx_ptr, GRASS_PATH,
 			&img_width, &img_height);
+	if (!img_background)
+		return ;
 	i = 0;
 	while (mlx->height_win > i)
 	{
@@ -29,10 +31,10 @@ void	ft_draw_background(t_mlx *mlx)
 		while (mlx->width_win > j)
 		{
 			mlx_put_image_to_window(mlx -> mlx_ptr, mlx -> win_ptr,
-				img_background, i, j);
+				img_background, j, i);
 			j += img_width;
 		}
-		i += img_width;
+		i += img_height;
 	}
 }
 
@@ -45,15 +47,15 @@ void	ft_draw_collections_player(t_mlx *mlx)
 	i = 0;
 	while (mlx->map.n_collects > i)
 	{
-		x = mlx->map.collectibles[i].x * 32;
-		y = mlx->map.collectibles[i].y * 32;
+		x = mlx->map.collectibles[i].x * TILE_SIZE;
+		y = mlx->map.collectibles[i].y * TILE_SIZE;
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			mlx->map.collectibles[i++].img, x, y);
+			mlx->map.collectibles[i++].img, y, x);
 	}
-	x = mlx->player.x * 32;
-	y = mlx->player.y * 32;
+	x = mlx->player.x * TILE_SIZE;
+	y = mlx->player.y * TILE_SIZE;
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-		mlx->player.img_up, x, y);
+		mlx->player.img_up, y, x);
 }
 
 void	ft_draw_wall(t_mlx *mlx)
@@ -63,12 +65,13 @@ void	ft_draw_wall(t_mlx *mlx)
 	int		y;
 
 	i = 0;
-	while (mlx->map.n_collects > i)
+	while (mlx->map.n_wall > i)
 	{
-		x = mlx->map.collectibles[i].x * 32;
-		y = mlx->map.collectibles[i].y * 32;
+		x = mlx->map.wall[i].height * TILE_SIZE;
+		y = mlx->map.wall[i].width * TILE_SIZE;
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			mlx->map.wall[i++].img, x, y);
+			mlx->map.wall[i].img, y, x);
+		i++;
 	}
 }
 

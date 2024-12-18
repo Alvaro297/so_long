@@ -24,14 +24,18 @@
 # include <stdbool.h>
 
 # define ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
+# define KY_W 119
+# define KY_A 97
+# define KY_S 115
+# define KY_D 100
 # define TILE_SIZE 32
-# define GRASS_PATH "../Textures/Floor.xpm"
-# define WALL_PATH "../Textures/Tree.xpm"
-# define COLLEC_PATH "../Textures/Coleccionable.xpm"
+# define PLAYER_UP "./Textures/Gojo.xpm"
+# define PLAYER_DOWN "./Textures/Gojo_back.xpm"
+# define PLAYER_LEFT "./Textures/Gojo_left.xpm"
+# define PLAYER_RIGHT "./Textures/Gojo_right.xpm"
+# define GRASS_PATH "./Textures/Floor.xpm"
+# define WALL_PATH "./Textures/Tree.xpm"
+# define COLLEC_PATH "./Textures/Coleccionable.xpm"
 
 // ---- Main ---- //
 int		main(int argc, char **argv);
@@ -48,7 +52,7 @@ void	ft_localization(t_mlx *mlx, t_player *player);
 void	ft_init_all_map(t_mlx *mlx, t_map *map);
 // -- Init Wall -- //
 void	ft_wall_start(t_mlx *mlx, t_map *map);
-void	ft_localization_wall(t_mlx *mlx, t_wall *wall);
+void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y);
 // -- Validating Flood Fill -- //
 bool	ft_flood_fill(t_mlx *mlx, t_map *map);
 // -- Validating Map -- //
@@ -67,9 +71,9 @@ void	ft_render_map(t_mlx *mlx);
 int		key_hook(int keycode, t_mlx *mlx);
 void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background);
 void	ft_change_player_texture(t_mlx *mlx, t_player player, int key);
-void	ft_delete_collect(t_mlx *mlx, t_player player);
+void	ft_delete_collect(t_mlx *mlx);
 // ---- Endgame ---- //
-void	ft_validate_win_game(t_mlx *mlx, t_player player, int keycode);
+void	ft_validate_win_game(t_mlx *mlx, int keycode);
 int		ft_exit_fail(t_mlx *mlx);
 void	ft_win_game(t_mlx *mlx);
 // ---- Free game ---- //

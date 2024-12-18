@@ -12,50 +12,52 @@
 
 #include "../Headers/so_long.h"
 
-void	ft_delete_collect(t_mlx *mlx, t_player player)
+void	ft_delete_collect(t_mlx *mlx)
 {
-	t_collectible	*tmp;
-	t_collectible	*prev;
+	int	i;
+	int	j;
 
-	tmp = mlx->map.collectibles;
-	prev = mlx->map.collectibles;
-	while (tmp)
+	i = 0;
+	j = 0;
+	while (i < mlx->map.n_collects)
 	{
-		if (tmp->x == player.x && tmp->y == player.y)
+		if (mlx->map.collectibles[i].x == mlx->player.x && mlx->map.collectibles[i].y == mlx->player.y)
 		{
-			if (tmp == mlx->map.collectibles)
-				mlx->map.collectibles = tmp->next;
-			else
-				prev->next = tmp->next;
-			free(tmp);
+			ft_printf("Collectible found and removed at position: (%d, %d)\n", mlx->map.collectibles[i].x, mlx->map.collectibles[i].y);
+			j = i;
+			while (j < mlx->map.n_collects - 1)
+			{
+				mlx->map.collectibles[j] = mlx->map.collectibles[j + 1];
+				j++;
+			}
 			mlx->map.n_collects--;
+			ft_printf("Number of collectibles remaining: %d\n", mlx->map.n_collects);
 			return ;
 		}
-		prev = tmp;
-		tmp = tmp->next;
+		i++;
 	}
 }
 
 void	ft_change_player_texture(t_mlx *mlx, t_player player, int key)
 {
-	if (key == KEY_W)
+	if (key == KY_W)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			player.img_up, (player.x * 32), (player.y * 32));
+			player.img_down, (mlx->player.y * 32), (mlx->player.x * 32));
 	}
-	else if (key == KEY_S)
+	else if (key == KY_S)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			player.img_down, (player.x * 32), (player.y * 32));
+			player.img_up, (mlx->player.y * 32), (mlx->player.x * 32));
 	}
-	else if (key == KEY_A)
+	else if (key == KY_A)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			player.img_left, (player.x * 32), (player.y * 32));
+			player.img_left, (mlx->player.y * 32), (mlx->player.x * 32));
 	}
-	else if (key == KEY_D)
+	else if (key == KY_D)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-			player.img_right, (player.x * 32), (player.y * 32));
+			player.img_right, (mlx->player.y * 32), (mlx->player.x * 32));
 	}
 }
