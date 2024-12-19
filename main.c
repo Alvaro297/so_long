@@ -32,7 +32,7 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 	if (!ft_flood_fill(mlx, map))
 	{
 		close(fd);
-		ft_free_map(&mlx->map);
+		ft_free_all(mlx);
 		exit(1);
 	}
 	close(fd);

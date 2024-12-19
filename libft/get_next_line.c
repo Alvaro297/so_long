@@ -70,12 +70,12 @@ static char	*ft_get_line(int fd, char *tline)
 	ssize_t	bytesread;
 
 	bytesread = 1;
-	line = ft_calloc(sizeof(char), 10 + 1);
+	line = ft_calloc(sizeof(char), 1 + 1);
 	if (!line)
 		return (NULL);
 	while (bytesread > 0 && !ft_strchr(tline, '\n'))
 	{
-		bytesread = read(fd, line, 10);
+		bytesread = read(fd, line, 1);
 		if (bytesread < 0)
 		{
 			free(tline);
@@ -89,11 +89,17 @@ static char	*ft_get_line(int fd, char *tline)
 	return (tline);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int reset)
 {
 	static char	*tline = NULL;
 	char		*line;
 
+	if (reset == 0)
+	{
+		free(tline);
+		tline = NULL;
+		return (NULL);
+	}
 	if (fd < 0)
 		return (NULL);
 	tline = ft_get_line(fd, tline);

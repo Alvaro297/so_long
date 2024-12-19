@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(MLXDIR)
 NAME = so_long
 
 # Directorios
-SRCDIRS = Endgame Free_game Init_game Rendering Draw_images libft
+SRCDIRS = Endgame Free_game Init_game Rendering Draw_images  Validating libft
 INCDIR = includes
 MLXDIR = minilibx-linux
 
@@ -13,12 +13,11 @@ SRCS = $(wildcard Endgame/*.c) \
 		$(wildcard Init_game/*.c) \
 		$(wildcard Rendering/*.c) \
 		$(wildcard Draw_images/*.c) \
+		$(wildcard Validating/*.c) \
 		$(wildcard libft/*.c) \
 		init_all.c \
 		init_mapping.c \
 		init_wall.c \
-		validating_flood_fill.c\
-		validating_map.c \
 		draw_images.c \
 		main.c
 

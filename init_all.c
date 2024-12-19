@@ -56,13 +56,13 @@ void	ft_init_mapping(int fd, t_map *map)
 	if (!map->matriz)
 		return ;
 	i = 0;
-	line = get_next_line(fd);
+	line = get_next_line(fd, 1);
 	while (line != NULL)
 	{
 		trimmed_line = ft_strtrim(line, "\n");
 		free(line);
 		map->matriz[i] = trimmed_line;
-		line = get_next_line(fd);
+		line = get_next_line(fd, 1);
 		i++;
 	}
 	map->matriz[i] = NULL;

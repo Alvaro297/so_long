@@ -35,6 +35,7 @@
 # define PLAYER_RIGHT "./Textures/Gojo_right.xpm"
 # define GRASS_PATH "./Textures/Floor.xpm"
 # define WALL_PATH "./Textures/Tree.xpm"
+# define EXIT_PATH "./Textures/exit.xpm"
 # define COLLEC_PATH "./Textures/Coleccionable.xpm"
 
 // ---- Main ---- //
@@ -79,7 +80,7 @@ void	ft_win_game(t_mlx *mlx);
 // ---- Free game ---- //
 void	ft_free_all(t_mlx *mlx);
 void	ft_free_map(t_map *map);
-void	ft_free_player(t_player *player);
+void	ft_free_player(t_mlx *mlx, t_player *player);
 void	ft_cleanup(t_mlx *mlx);
 void	ft_error_message(t_mlx *mlx, char *message);
 #endif

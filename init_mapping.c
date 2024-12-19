@@ -16,24 +16,16 @@ void	ft_player_start(t_mlx *mlx)
 {
 	int			img_width;
 	int			img_height;
-	t_player	*player;
 
-	player = malloc(sizeof(t_player));
-	if (!player)
-	{
-		perror("Error\nmalloc failed\n");
-		exit(1);
-	}
-	player->img_up = mlx_xpm_file_to_image(mlx->mlx_ptr,
+	mlx->player.img_up = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			PLAYER_UP, &img_width, &img_height);
-	player->img_down = mlx_xpm_file_to_image(mlx->mlx_ptr,
+	mlx->player.img_down = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			PLAYER_DOWN, &img_width, &img_height);
-	player->img_left = mlx_xpm_file_to_image(mlx->mlx_ptr,
+	mlx->player.img_left = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			PLAYER_LEFT, &img_width, &img_height);
-	player->img_right = mlx_xpm_file_to_image(mlx->mlx_ptr,
+	mlx->player.img_right = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			PLAYER_RIGHT, &img_width, &img_height);
-	ft_localization(mlx, player);
-	mlx->player = *player;
+	ft_localization(mlx, &mlx->player);
 }
 
 static void	ft_localization_collec(t_mlx *mlx, t_collectible *collec, int x, int y)
