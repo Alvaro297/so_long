@@ -52,6 +52,7 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 	else if (keycode == KY_W || keycode == KY_S
 		|| keycode == KY_A || keycode == KY_D)
 		ft_move(mlx, mlx->player, keycode, img_background);
+	mlx_destroy_image(mlx->mlx_ptr, img_background);
 	return (0);
 }
 

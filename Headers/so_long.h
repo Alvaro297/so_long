@@ -81,4 +81,5 @@ void	ft_free_all(t_mlx *mlx);
 void	ft_free_map(t_map *map);
 void	ft_free_player(t_player *player);
 void	ft_cleanup(t_mlx *mlx);
+void	ft_error_message(t_mlx *mlx, char *message);
 #endif

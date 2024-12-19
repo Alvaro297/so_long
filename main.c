@@ -18,14 +18,11 @@ void	ft_init(char *argv, t_mlx *mlx, t_map *map)
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("\033cError invalid path\n");
-		exit (1);
-	}
+		ft_error_message(mlx, "\033cError invalid path\n");
 	if (!ft_validation_map(argv, fd, map))
 	{
 		close(fd);
-		exit (1);
+		ft_error_message(mlx, NULL);
 	}
 	close(fd);
 	fd = open(argv, O_RDONLY);

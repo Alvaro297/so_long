@@ -84,7 +84,9 @@ bool	ft_flood_fill(t_mlx *mlx, t_map *map)
 	char		**matriz_copy;
 	t_map_fill	size;
 	t_map_fill	begin;
+	int			i;
 
+	i = 0;
 	size.x = map->height;
 	size.y = map->width;
 	begin.x = mlx->player.x;
@@ -94,9 +96,13 @@ bool	ft_flood_fill(t_mlx *mlx, t_map *map)
 	if (!validate_flood_fill(matriz_copy))
 	{
 		ft_printf("\033cError player cant go for all map\n");
+		while (i < map->height)
+			free(matriz_copy[i++]);
 		free(matriz_copy);
 		return (false);
 	}
+	while (i < map->height)
+		free(matriz_copy[i++]);
 	free(matriz_copy);
 	return (true);
 }

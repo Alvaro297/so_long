@@ -17,22 +17,24 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 	ft_init_map(map);
 	if (ft_strstr(map_src, ".ber") == NULL)
 	{
-		ft_printf("\033cError invalid map\n");
+		ft_printf("\033cError invalid map no .ber\n");
 		return (false);
 	}
 	if (ft_bad_width(fd, map) == true)
 	{
 		ft_printf("\033cError invalid width\n");
+		close(fd);
 		return (false);
 	}
 	close(fd);
 	fd = open(map_src, O_RDONLY);
 	if (ft_bad_implementation(fd, map))
 	{
-		ft_printf("\033cError invalid bad implemets of player,\
-			exit or collects\n");
+		ft_printf("\033cError invalid map\n");
+		close(fd);
 		return (false);
 	}
+	close(fd);
 	return (true);
 }
 
@@ -47,8 +49,9 @@ bool	ft_bad_width(int fd, t_map *map)
 		map->height++;
 		while (line != NULL)
 		{
-			map->height++;
+			free(line);
 			line = get_next_line(fd);
+			map->height++;
 			if (line != NULL && map->width != ft_strlen_mod(line))
 			{
 				free(line);
@@ -57,8 +60,6 @@ bool	ft_bad_width(int fd, t_map *map)
 			free(line);
 		}
 	}
-	if (line)
-		free(line);
 	if (map->height == map->width || (map->height == 0 || map->width == 0))
 			return (true);
 	map->height--;
@@ -76,12 +77,20 @@ bool	ft_bad_implementation(int fd, t_map *map)
 	while (line != NULL)
 	{
 		if (ft_check_map_characters(line, map, f) == 1)
+		{
+			free(line);
 			return (true);
+		}
 		if (ft_check_map_items(line, map) == 1)
+		{
+			free(line);
 			return (true);
+		}
+		free(line);
 		line = get_next_line(fd);
 		f++;
 	}
+	free(line);
 	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
 		return (true);
 	return (false);

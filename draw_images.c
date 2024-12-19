@@ -36,6 +36,7 @@ void	ft_draw_background(t_mlx *mlx)
 		}
 		i += img_height;
 	}
+	mlx_destroy_image(mlx->mlx_ptr, img_background);
 }
 
 void	ft_draw_collections_player(t_mlx *mlx)
