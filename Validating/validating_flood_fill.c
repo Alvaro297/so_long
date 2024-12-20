@@ -26,13 +26,13 @@ static bool	validate_flood_fill(char **tab)
 			if (tab[i][j] != '1' && tab[i][j] != 'E' && tab[i][j] != '\r'
 				&& tab[i][j] != '\n')
 			{
-				ft_printf("Invalid character found at i = %d, j = %d, char = %i\n", i, j, tab[i][j]);
+				ft_printf("Invalid character found at i = %d,\
+					j = %d, char = %i\n", i, j, tab[i][j]);
 				return (false);
 			}
 			j++;
 		}
 		i++;
-
 	}
 	return (true);
 }
@@ -61,7 +61,7 @@ static char	**ft_matriz_copy(t_map *map)
 	int		i;
 
 	i = 0;
-	matriz_copy = (char **)malloc(sizeof(char *) * map->height);
+	matriz_copy = (char **)malloc(sizeof(char *) * map->height + 1);
 	while (i < map -> height)
 	{
 		matriz_copy[i] = ft_strdup(map->matriz[i]);
@@ -75,6 +75,7 @@ static char	**ft_matriz_copy(t_map *map)
 		}
 		i++;
 	}
+	matriz_copy[i] = NULL;
 	return (matriz_copy);
 }
 
