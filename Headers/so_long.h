@@ -84,6 +84,7 @@ int		ft_exit_fail(t_mlx *mlx);
 void	ft_win_game(t_mlx *mlx);
 // ---- Free game ---- //
 void	ft_free_all(t_mlx *mlx);
+void	ft_free_all_exit(t_mlx *mlx);
 void	ft_free_map(t_map *map);
 void	ft_free_player(t_mlx *mlx, t_player *player);
 void	ft_error_message(t_mlx *mlx, char *message);

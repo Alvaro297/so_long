@@ -57,8 +57,8 @@ void	ft_draw_collections_player(t_mlx *mlx)
 	y = mlx->player.y * TILE_SIZE;
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		mlx->player.img_up, y, x);
-	x = mlx->map.exit.height;
-	y = mlx->map.exit.width;
+	x = mlx->map.exit.height * TILE_SIZE;
+	y = mlx->map.exit.width * TILE_SIZE;
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		mlx->map.exit.img, y, x);
 }

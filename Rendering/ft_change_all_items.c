@@ -12,6 +12,16 @@
 
 #include "../Headers/so_long.h"
 
+static void	ft_print_exit(t_mlx *mlx)
+{
+	if (mlx->map.n_collects == 0)
+	{
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+			mlx->map.exit.img_out, (mlx->map.exit.width * TILE_SIZE),
+			(mlx->map.exit.height * TILE_SIZE));
+	}
+}
+
 void	ft_delete_collect(t_mlx *mlx)
 {
 	int	i;
@@ -30,13 +40,7 @@ void	ft_delete_collect(t_mlx *mlx)
 				j++;
 			}
 			mlx->map.n_collects--;
-			if (mlx->map.n_collects == 0)
-			{
-				mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img);
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-					mlx->map.exit.img_out, (mlx->map.exit.height * TILE_SIZE),
-					(mlx->map.exit.width * TILE_SIZE));
-			}
+			ft_print_exit(mlx);
 			return ;
 		}
 		i++;

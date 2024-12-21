@@ -32,10 +32,11 @@ void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background)
 		key == KY_D && (mlx->map.matriz[mlx->player.x][mlx->player.y + 1] != 'E'
 		|| mlx->map.n_collects == 0))
 		mlx->player.y += 1;
+	mlx_destroy_image(mlx->mlx_ptr, img_background);
 	if (mlx->map.matriz[mlx->player.x][mlx->player.y] == 'C')
 		ft_delete_collect(mlx);
-	mlx_destroy_image(mlx->mlx_ptr, img_background);
 	ft_validate_win_game(mlx, key);
+	ft_printf("Movements: %d\n", ++mlx->moves);
 	ft_change_player_texture(mlx, player, key);
 	mlx_do_sync(mlx->mlx_ptr);
 }
