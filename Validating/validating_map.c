@@ -37,8 +37,6 @@ bool	ft_validation_map(char	*map_src, int fd, t_map *map)
 	return (true);
 }
 
-
-
 int	ft_check_map_characters(char *line, t_map *map, int f)
 {
 	int	i;
