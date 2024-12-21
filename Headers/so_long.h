@@ -36,6 +36,7 @@
 # define GRASS_PATH "./Textures/Floor.xpm"
 # define WALL_PATH "./Textures/Tree.xpm"
 # define EXIT_PATH "./Textures/exit.xpm"
+# define EXIT_OUT "./Textures/exit_out.xpm"
 # define COLLEC_PATH "./Textures/Coleccionable.xpm"
 
 // ---- Main ---- //
@@ -51,6 +52,9 @@ void	ft_player_start(t_mlx *mlx);
 void	ft_collec_start(t_mlx *mlx, t_map *map);
 void	ft_localization(t_mlx *mlx, t_player *player);
 void	ft_init_all_map(t_mlx *mlx, t_map *map);
+// -- Init Exit -- //
+void	ft_exit_start(t_mlx *mlx, t_map *map);
+void	ft_localization_exit(t_mlx *mlx, t_exit *exit);
 // -- Init Wall -- //
 void	ft_wall_start(t_mlx *mlx, t_map *map);
 void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y);
@@ -62,6 +66,7 @@ bool	ft_bad_width(int fd, t_map *map);
 bool	ft_bad_implementation(int fd, t_map *map);
 int		ft_check_map_characters(char *line, t_map *map, int f);
 int		ft_check_map_items(char *line, t_map *map);
+
 // ---- Draw images ---- //
 void	ft_draw_background(t_mlx *mlx);
 void	ft_draw_collections_player(t_mlx *mlx);
@@ -81,6 +86,5 @@ void	ft_win_game(t_mlx *mlx);
 void	ft_free_all(t_mlx *mlx);
 void	ft_free_map(t_map *map);
 void	ft_free_player(t_mlx *mlx, t_player *player);
-void	ft_cleanup(t_mlx *mlx);
 void	ft_error_message(t_mlx *mlx, char *message);
 #endif

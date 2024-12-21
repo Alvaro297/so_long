@@ -31,6 +31,10 @@ void	ft_init_map(t_map *map)
 	map->n_players = 0;
 	map->n_exits = 0;
 	map->n_wall = 0;
+	map->exit.height = 0;
+	map->exit.width = 0; 
+	map->exit.img = NULL;
+	map->exit.img_out = NULL;
 	map->collectibles = NULL;
 	map->wall = NULL;
 }

@@ -40,6 +40,10 @@ void	ft_free_all(t_mlx *mlx)
 	ft_free_player(mlx, &mlx->player);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->map.collectibles[0].img);
 	free(mlx->map.collectibles);
+	if (mlx->map.exit.img_out)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img_out);
+	if (mlx->map.exit.img)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->map.wall[0].img);
 	free(mlx->map.wall);
 	if (mlx->win_ptr)

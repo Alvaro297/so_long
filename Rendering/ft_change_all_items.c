@@ -18,20 +18,25 @@ void	ft_delete_collect(t_mlx *mlx)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < mlx->map.n_collects)
 	{
-		if (mlx->map.collectibles[i].x == mlx->player.x && mlx->map.collectibles[i].y == mlx->player.y)
+		if (mlx->map.collectibles[i].x == mlx->player.x
+			&& mlx->map.collectibles[i].y == mlx->player.y)
 		{
-			ft_printf("Collectible found and removed at position: (%d, %d)\n", mlx->map.collectibles[i].x, mlx->map.collectibles[i].y);
 			j = i;
 			while (j < mlx->map.n_collects - 1)
 			{
-				mlx->map.collectibles[j] = mlx->map.collectibles[j + 1];
+				mlx->map.collectibles[j] = mlx->map.collectibles[j];
 				j++;
 			}
 			mlx->map.n_collects--;
-			ft_printf("Number of collectibles remaining: %d\n", mlx->map.n_collects);
+			if (mlx->map.n_collects == 0)
+			{
+				mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img);
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+					mlx->map.exit.img_out, (mlx->map.exit.height * TILE_SIZE),
+					(mlx->map.exit.width * TILE_SIZE));
+			}
 			return ;
 		}
 		i++;

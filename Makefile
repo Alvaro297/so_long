@@ -19,6 +19,7 @@ SRCS = $(wildcard Endgame/*.c) \
 		init_mapping.c \
 		init_wall.c \
 		draw_images.c \
+		ft_exit_start.c \
 		main.c
 
 

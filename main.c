@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	if (!mlx.win_ptr)
 	{
 		ft_printf("\033Error creating window\n");
-		ft_cleanup(&mlx);
+		ft_free_all(&mlx);
 		return (1);
 	}
 	ft_draw_images(&mlx);

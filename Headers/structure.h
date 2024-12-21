@@ -33,6 +33,14 @@ typedef struct s_map_fill
 	int		y;
 } t_map_fill;
 
+typedef struct s_exit
+{
+	int		height;
+	int		width;
+	void	*img;
+	void	*img_out;
+}	t_exit;
+
 
 typedef struct s_map
 {
@@ -43,6 +51,7 @@ typedef struct s_map
 	int						n_wall;
 	int						n_players;
 	int						n_exits;
+	t_exit					exit;
 	t_collectible			*collectibles;
 	t_wall					*wall;
 }	t_map;

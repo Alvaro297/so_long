@@ -99,6 +99,7 @@ void	ft_init_all_map(t_mlx *mlx, t_map *map)
 	mlx->map = *map;
 	mlx->height_win = map->height * TILE_SIZE;
 	mlx->width_win = map->width * TILE_SIZE;
+	ft_exit_start(mlx, map);
 	ft_collec_start(mlx, map);
 	ft_wall_start(mlx, map);
 	mlx->moves = 0;
