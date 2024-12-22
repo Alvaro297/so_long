@@ -101,6 +101,8 @@ void	ft_init_all_map(t_mlx *mlx, t_map *map)
 	mlx->width_win = map->width * TILE_SIZE;
 	ft_exit_start(mlx, map);
 	ft_collec_start(mlx, map);
+	if (map->n_villians > 0)
+		ft_villian_start(mlx, map);
 	ft_wall_start(mlx, map);
 	mlx->moves = 0;
 }

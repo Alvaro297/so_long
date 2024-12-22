@@ -12,7 +12,7 @@
 
 #include "../Headers/so_long.h"
 
-void	ft_draw_background(t_mlx *mlx)
+static void	ft_draw_background(t_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -39,7 +39,7 @@ void	ft_draw_background(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx_ptr, img_background);
 }
 
-void	ft_draw_collections_player(t_mlx *mlx)
+static void	ft_draw_collections_player(t_mlx *mlx)
 {
 	int		i;
 	int		x;
@@ -63,7 +63,7 @@ void	ft_draw_collections_player(t_mlx *mlx)
 		mlx->map.exit.img, y, x);
 }
 
-void	ft_draw_wall(t_mlx *mlx)
+static void	ft_draw_wall(t_mlx *mlx)
 {
 	int		i;
 	int		x;
@@ -80,9 +80,28 @@ void	ft_draw_wall(t_mlx *mlx)
 	}
 }
 
+static void	ft_draw_villian(t_mlx *mlx)
+{
+	int		i;
+	int		x;
+	int		y;
+
+	i = 0;
+	printf("Number of villains: %d\n", mlx->map.n_villians);
+	while (mlx->map.n_villians > i)
+	{
+		x = mlx->map.villians[i].height * TILE_SIZE;
+		y = mlx->map.villians[i].width * TILE_SIZE;
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+			mlx->map.villians[i].img, y, x);
+		i++;
+	}
+}
+
 void	ft_draw_images(t_mlx *mlx)
 {
 	ft_draw_background(mlx);
 	ft_draw_wall(mlx);
 	ft_draw_collections_player(mlx);
+	ft_draw_villian(mlx);
 }

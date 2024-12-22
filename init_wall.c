@@ -12,22 +12,7 @@
 
 #include "Headers/so_long.h"
 
-void	ft_wall_start(t_mlx *mlx, t_map *map)
-{
-	t_wall	*wall;
-
-	wall = malloc(sizeof(t_wall) * map->n_wall);
-	if (!wall)
-	{
-		perror("Error\nmalloc failed\n");
-		free(wall);
-		exit(1);
-	}
-	ft_localization_wall(mlx, wall, 0, 0);
-	mlx->map.wall = wall;
-}
-
-void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y)
+static void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y)
 {
 	int		img_height;
 	int		img_width;
@@ -53,4 +38,20 @@ void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y)
 		}
 		x++;
 	}
+}
+
+
+void	ft_wall_start(t_mlx *mlx, t_map *map)
+{
+	t_wall	*wall;
+
+	wall = malloc(sizeof(t_wall) * map->n_wall);
+	if (!wall)
+	{
+		perror("Error\nmalloc failed\n");
+		free(wall);
+		exit(1);
+	}
+	ft_localization_wall(mlx, wall, 0, 0);
+	mlx->map.wall = wall;
 }

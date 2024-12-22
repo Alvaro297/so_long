@@ -46,28 +46,9 @@ void	ft_free_all(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img_out);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->map.wall[0].img);
 	free(mlx->map.wall);
-	if (mlx->win_ptr)
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	if (mlx->mlx_ptr)
-	{
-		mlx_destroy_display(mlx->mlx_ptr);
-		free(mlx->mlx_ptr);
-	}
-	exit(0);
-}
-
-void	ft_free_all_exit(t_mlx *mlx)
-{
-	ft_free_map(&mlx->map);
-	ft_free_player(mlx, &mlx->player);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->map.collectibles[0].img);
-	free(mlx->map.collectibles);
-	if (mlx->map.exit.img)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img);
-	if (mlx->map.exit.img_out)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->map.exit.img_out);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->map.wall[0].img);
-	free(mlx->map.wall);
+	if (mlx->map.n_villians > 0)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->map.villians[0].img);
+	free(mlx->map.villians);
 	if (mlx->win_ptr)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	if (mlx->mlx_ptr)

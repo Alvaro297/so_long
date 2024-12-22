@@ -73,21 +73,17 @@ int	ft_check_map_items(char *line, t_map *map)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == 'E' || line[i] == 'C'
-			|| line[i] == 'P' || line[i] == '1'
-			|| line [i] == '0' || line[i] == '\r'
-			|| line[i] == '\n')
-		{
-			if (line[i] == '1')
-				map->n_wall++;
-			if (line[i] == 'E')
-				map->n_exits++;
-			if (line[i] == 'C')
-				map->n_collects++;
-			if (line[i] == 'P')
-				map->n_players++;
-		}
-		else
+		if (line[i] == 'E')
+			map->n_exits++;
+		else if (line[i] == 'C')
+			map->n_collects++;
+		else if (line[i] == 'P')
+			map->n_players++;
+		else if (line[i] == '1')
+			map->n_wall++;
+		else if (line[i] == 'V')
+			map->n_villians++;
+		else if (line[i] != '0' && line[i] != '\r' && line[i] != '\n')
 			return (1);
 		i++;
 	}

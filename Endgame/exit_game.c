@@ -15,7 +15,7 @@
 int	ft_exit_fail(t_mlx *mlx)
 {
 	ft_printf("\033cYou press escape or x\n");
-	ft_free_all_exit(mlx);
+	ft_free_all(mlx);
 	exit(0);
 	return (0);
 }

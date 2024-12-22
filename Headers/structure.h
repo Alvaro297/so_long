@@ -20,6 +20,14 @@ typedef struct s_collectible
 	void	*img;
 }	t_collectible;
 
+typedef struct s_villians
+{
+	int		height;
+	int		width;
+	void	*img;
+}	t_villians;
+
+
 typedef struct s_wall
 {
 	int		height;
@@ -49,10 +57,12 @@ typedef struct s_map
 	int						width;
 	int						n_collects;
 	int						n_wall;
+	int						n_villians;
 	int						n_players;
 	int						n_exits;
 	t_exit					exit;
 	t_collectible			*collectibles;
+	t_villians				*villians;
 	t_wall					*wall;
 }	t_map;
 

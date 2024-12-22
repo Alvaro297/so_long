@@ -29,6 +29,7 @@ void	ft_init_map(t_map *map)
 	map->width = 0;
 	map->n_collects = 0;
 	map->n_players = 0;
+	map->n_villians = 0;
 	map->n_exits = 0;
 	map->n_wall = 0;
 	map->exit.height = 0;
@@ -36,6 +37,7 @@ void	ft_init_map(t_map *map)
 	map->exit.img = NULL;
 	map->exit.img_out = NULL;
 	map->collectibles = NULL;
+	map->villians = NULL;
 	map->wall = NULL;
 }
 
