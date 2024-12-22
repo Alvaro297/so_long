@@ -51,19 +51,20 @@ static void	flood_fill(char **tab, t_map_fill size, t_map_fill begin)
 	fill(tab, size, begin, tab[begin.y][begin.x]);
 }
 
-static char	**ft_matriz_copy(t_map *map)
+static char **ft_matriz_copy(t_map *map)
 {
-	char **matriz_copy;
+	char	**matriz_copy;
 	int		i;
 
 	i = 0;
-	matriz_copy = (char **)malloc(sizeof(char *) * map->height + 1);
-	while (i < map -> height)
+	matriz_copy = (char **)malloc(sizeof(char *) * (map->height + 1)); // Asegúrate de asignar suficiente memoria
+	if (!matriz_copy)
+		return (NULL);
+	while (i < map->height)
 	{
 		matriz_copy[i] = ft_strdup(map->matriz[i]);
 		if (!matriz_copy[i])
 		{
-			ft_printf("Error: Memory allocation failed for matriz_copy[%d]\n", i);
 			while (i-- > 0)
 				free(matriz_copy[i]);
 			free(matriz_copy);
@@ -71,7 +72,7 @@ static char	**ft_matriz_copy(t_map *map)
 		}
 		i++;
 	}
-	matriz_copy[i] = NULL;
+	matriz_copy[i] = NULL; // Asegúrate de terminar el array con NULL
 	return (matriz_copy);
 }
 

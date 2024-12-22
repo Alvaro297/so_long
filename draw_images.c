@@ -87,7 +87,6 @@ static void	ft_draw_villian(t_mlx *mlx)
 	int		y;
 
 	i = 0;
-	printf("Number of villains: %d\n", mlx->map.n_villians);
 	while (mlx->map.n_villians > i)
 	{
 		x = mlx->map.villians[i].height * TILE_SIZE;
