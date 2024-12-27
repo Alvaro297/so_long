@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_villian_start.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-27 17:43:22 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-27 17:43:22 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Headers/so_long.h"
 
-
-static void	ft_localization_villan(t_mlx *mlx, t_villians *villian, int x, int y)
+static void	ft_localization_villan(t_mlx *mlx,
+	t_villians *villian, int x, int y)
 {
 	int		img_height;
 	int		img_width;
@@ -28,7 +40,6 @@ static void	ft_localization_villan(t_mlx *mlx, t_villians *villian, int x, int y
 		x++;
 	}
 }
-
 
 void	ft_villian_start(t_mlx *mlx, t_map *map)
 {

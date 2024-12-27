@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init(argv[argc], &mlx, &map);
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, mlx.width_win,
-		mlx.height_win, "so_long");
+			mlx.height_win, "so_long");
 	if (!mlx.win_ptr)
 	{
 		ft_printf("\033Error creating window\n");

@@ -28,7 +28,8 @@ void	ft_player_start(t_mlx *mlx)
 	ft_localization(mlx, &mlx->player);
 }
 
-static void	ft_localization_collec(t_mlx *mlx, t_collectible *collec, int x, int y)
+static void	ft_localization_collec(t_mlx *mlx,
+	t_collectible *collec, int x, int y)
 {
 	int		img_height;
 	int		img_width;

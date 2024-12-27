@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Headers/so_long.h"
+#include "Headers/so_long.h"
 
 static void	ft_draw_background(t_mlx *mlx)
 {
