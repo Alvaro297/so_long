@@ -5,7 +5,7 @@ NAME = so_long
 # Directorios
 SRCDIRS = Endgame Free_game Init_game Rendering Draw_images  Validating libft
 INCDIR = includes
-MLXDIR = minilibx-linux
+MLXDIR = minilibx_mia
 
 # Archivos fuente
 SRCS = $(wildcard Endgame/*.c) \
@@ -31,7 +31,7 @@ FT_PRINTF_DIR = ./libft/ft_printf_so_long
 FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 # Librerías
-MLX = $(MLXDIR)/libmlx.a
+MLX = $(MLXDIR)/libmlx_Linux.a
 LIBS = -L$(MLXDIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lbsd
 
 # Reglas
