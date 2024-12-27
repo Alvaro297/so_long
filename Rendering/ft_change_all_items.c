@@ -36,7 +36,7 @@ void	ft_delete_collect(t_mlx *mlx)
 			j = i;
 			while (j < mlx->map.n_collects - 1)
 			{
-				mlx->map.collectibles[j] = mlx->map.collectibles[j];
+				mlx->map.collectibles[j] = mlx->map.collectibles[j + 1];
 				j++;
 			}
 			mlx->map.n_collects--;

@@ -56,7 +56,7 @@ int	ft_check_map_characters(char *line, t_map *map, int f)
 		}
 		else
 		{
-			if (i == 0 || i == map->width - 1)
+			if (i == 0 || i == map->width)
 			{
 				if (line[i] != '1')
 					return (1);

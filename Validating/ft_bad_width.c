@@ -1,11 +1,21 @@
-# include "../Headers/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bad_width.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-27 17:45:21 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-27 17:45:21 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../Headers/so_long.h"
 
 static bool	ft_bad_width_help(t_map *map)
 {
 	if (map->height == map->width || (map->height == 0 || map->width == 0))
-			return (true);
+		return (true);
 	map->height--;
-	map->width--;
 	return (false);
 }
 

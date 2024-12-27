@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bad_implementation.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvamart <alvamart@student.42madrid.com>   #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-12-27 17:45:00 by alvamart          #+#    #+#             */
+/*   Updated: 2024-12-27 17:45:00 by alvamart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Headers/so_long.h"
 
 static bool	ft_bad_implemetation_help(int fd, t_map *map)
 {
-	
 	if (map->n_exits != 1 || map->n_players != 1 || map->n_collects < 1)
 	{
 		get_next_line(fd, 0);

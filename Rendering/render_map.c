@@ -28,7 +28,7 @@ void	ft_move(t_mlx *mlx, t_player player, int key, void *img_background)
 		key == KY_A && (mlx->map.matriz[mlx->player.x][mlx->player.y - 1] != 'E'
 		|| mlx->map.n_collects == 0))
 		mlx->player.y -= 1;
-	else if (mlx->map.matriz[mlx->player.x][mlx->player.y + 1]!= '1' &&
+	else if (mlx->map.matriz[mlx->player.x][mlx->player.y + 1] != '1' &&
 		key == KY_D && (mlx->map.matriz[mlx->player.x][mlx->player.y + 1] != 'E'
 		|| mlx->map.n_collects == 0))
 		mlx->player.y += 1;
@@ -56,7 +56,7 @@ int	ft_key_hook(int keycode, t_mlx *mlx)
 	}
 	else if (keycode == KY_W || keycode == KY_S
 		|| keycode == KY_A || keycode == KY_D)
-			ft_move(mlx, mlx->player, keycode, img_background);
+		ft_move(mlx, mlx->player, keycode, img_background);
 	return (0);
 }
 

@@ -40,7 +40,6 @@ static void	ft_localization_wall(t_mlx *mlx, t_wall *wall, int x, int y)
 	}
 }
 
-
 void	ft_wall_start(t_mlx *mlx, t_map *map)
 {
 	t_wall	*wall;

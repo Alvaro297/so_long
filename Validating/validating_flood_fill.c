@@ -51,13 +51,13 @@ static void	flood_fill(char **tab, t_map_fill size, t_map_fill begin)
 	fill(tab, size, begin, tab[begin.y][begin.x]);
 }
 
-static char **ft_matriz_copy(t_map *map)
+static char	**ft_matriz_copy(t_map *map)
 {
 	char	**matriz_copy;
 	int		i;
 
 	i = 0;
-	matriz_copy = (char **)malloc(sizeof(char *) * (map->height + 1)); // Asegúrate de asignar suficiente memoria
+	matriz_copy = (char **)malloc(sizeof(char *) * (map->height + 1));
 	if (!matriz_copy)
 		return (NULL);
 	while (i < map->height)
@@ -72,7 +72,7 @@ static char **ft_matriz_copy(t_map *map)
 		}
 		i++;
 	}
-	matriz_copy[i] = NULL; // Asegúrate de terminar el array con NULL
+	matriz_copy[i] = NULL;
 	return (matriz_copy);
 }
 
