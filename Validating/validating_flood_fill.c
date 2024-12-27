@@ -23,8 +23,8 @@ static bool	validate_flood_fill(char **tab)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] != '1' && tab[i][j] != 'E' && tab[i][j] != '\r'
-				&& tab[i][j] != '\n' && tab[i][j] != 'V')
+			if (tab[i][j] != '1' && tab[i][j] != 'F' && tab[i][j] != '\r'
+				&& tab[i][j] != '\n' && tab[i][j] != 'V' && tab[i][j] != '0')
 				return (false);
 			j++;
 		}
@@ -37,8 +37,13 @@ static void	fill(char **tab, t_map_fill size, t_map_fill cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0
 		|| cur.x >= size.x || tab[cur.x][cur.y] == '1'
-		|| tab[cur.x][cur.y] == 'E' || tab[cur.x][cur.y] == 'V')
+		|| tab[cur.x][cur.y] == 'V')
 		return ;
+	if (tab[cur.x][cur.y] == 'E')
+	{
+		tab[cur.x][cur.y] = 'F';
+		return ;
+	}
 	tab[cur.x][cur.y] = '1';
 	fill(tab, size, (t_map_fill){cur.x - 1, cur.y}, to_fill);
 	fill(tab, size, (t_map_fill){cur.x + 1, cur.y}, to_fill);

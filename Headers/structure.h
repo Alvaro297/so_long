@@ -27,7 +27,6 @@ typedef struct s_villians
 	void	*img;
 }	t_villians;
 
-
 typedef struct s_wall
 {
 	int		height;
@@ -39,7 +38,7 @@ typedef struct s_map_fill
 {
 	int		x;
 	int		y;
-} t_map_fill;
+}	t_map_fill;
 
 typedef struct s_exit
 {
@@ -48,7 +47,6 @@ typedef struct s_exit
 	void	*img;
 	void	*img_out;
 }	t_exit;
-
 
 typedef struct s_map
 {

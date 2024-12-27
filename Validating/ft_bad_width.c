@@ -13,7 +13,7 @@
 
 static bool	ft_bad_width_help(t_map *map)
 {
-	if (map->height == map->width || (map->height == 0 || map->width == 0))
+	if ((map->height == 0 || map->width == 0))
 		return (true);
 	map->height--;
 	return (false);

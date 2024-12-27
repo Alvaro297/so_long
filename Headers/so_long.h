@@ -24,6 +24,10 @@
 # include <stdbool.h>
 
 # define ESC 65307
+# define KY_UP 65362
+# define KY_DOWN 65364
+# define KY_LEFT 65361
+# define KY_RIGHT 65363
 # define KY_W 119
 # define KY_A 97
 # define KY_S 115
