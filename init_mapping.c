@@ -100,6 +100,10 @@ void	ft_init_all_map(t_mlx *mlx, t_map *map)
 	mlx->map = *map;
 	mlx->height_win = map->height * TILE_SIZE;
 	mlx->width_win = map->width * TILE_SIZE;
+	if (mlx->width_win > MAX_WIDTH)
+		mlx->width_win = MAX_WIDTH;
+	if (mlx->height_win > MAX_HEIGHT)
+		mlx->height_win = MAX_HEIGHT;
 	ft_exit_start(mlx, map);
 	ft_collec_start(mlx, map);
 	if (map->n_villians > 0)

@@ -23,6 +23,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+# define MAX_WIDTH 1920
+# define MAX_HEIGHT 1080
 # define ESC 65307
 # define KY_UP 65362
 # define KY_DOWN 65364
