@@ -41,27 +41,16 @@ int	ft_check_map_characters(char *line, t_map *map, int f)
 {
 	int	i;
 
-	i = -1;
-	while (line[++i])
+	i = 0;
+	while (line[i])
 	{
-		if (line[i] >= 9 && line[i] <= 13)
+		if (line[i] < 9 || line[i] > 13)
 		{
-			i++;
-			continue ;
-		}
-		if (f == 0 || f == map->height)
-		{
-			if (line[i] != '1')
+			if ((f == 0 || f == map->height || i == 0
+					|| i == map->width) && line[i] != '1')
 				return (1);
 		}
-		else
-		{
-			if (i == 0 || i == map->width)
-			{
-				if (line[i] != '1')
-					return (1);
-			}
-		}
+		i++;
 	}
 	return (0);
 }
