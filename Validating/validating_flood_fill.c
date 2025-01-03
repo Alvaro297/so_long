@@ -70,11 +70,8 @@ static char	**ft_matriz_copy(t_map *map)
 		matriz_copy[i] = ft_strdup(map->matriz[i]);
 		if (!matriz_copy[i])
 		{
-			while (i > 0)
-			{
+			while (i-- > 0)
 				free(matriz_copy[i]);
-				i--;
-			}
 			free(matriz_copy);
 			return (NULL);
 		}
